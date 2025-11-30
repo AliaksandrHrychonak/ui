@@ -1,0 +1,533 @@
+@font-face {
+  font-family: 'Helvetica Now Variable';
+  src: url('Helvetica-Now-Var.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+/*
+  Button component (BEM)
+  ------------------------------------------------------------
+  Goals:
+  - Unified button styles with minimal nesting and logical properties
+  - BEM naming: .button with modifiers as boolean and _key_value
+  - All interactive states standardized: hover, active, focus-visible, disabled
+  - No dark theme in this project; accent can change via CSS custom properties
+  - Supports tone (accent, neutral, success, warning, danger)
+  - Supports views (filled, outline, soft, ghost, link)
+  - Sizes: s, m, l
+  - Optional: block, icon-only, loading
+*/
+
+/* SCSS tokens (single source of truth). These are the only hard values. */
+//$button-color-accent: #2f80ed;
+// Default accent fallback used if no app-level CSS variable provided
+$button-color-accent: #6d59ab;
+$button-color-accent-contrast: #ffffff;
+$button-color-neutral: #e6e6e6;
+$button-color-neutral-contrast: #d5d5d5;
+$button-color-success: #00D051;
+$button-color-success-contrast: #ffffff;
+$button-color-warning: #F7941D;
+$button-color-warning-contrast: #ffffff;
+$button-color-danger: #F8564E;
+$button-color-danger-contrast: #ffffff;
+
+$button-color-surface: #ffffff;
+$button-color-surface-subtle: #f3f4f6;
+$button-color-border: #e5e7eb;
+$button-color-text: #2C2C2C;
+
+// Effects
+// Stylized visible focus: inner light ring + outer halo
+$button-focus-inner-color: #ffffff;
+// Fallback color for outer focus halo (used when CSS var is unavailable)
+// Keep it aligned with accent by default
+$button-focus-color: $button-color-accent;
+
+// Sizing
+$button-radius: 4px;
+$button-radius-pill: 999px;
+$button-font-family: 'Helvetica Now Variable', Helvetica, Arial, sans-serif;
+$button-font-weight: 400;
+$button-font-size-s: 14px;
+$button-font-size-m: 16px;
+$button-font-size-l: 18px;
+$button-line-height: 1.2;
+$button-pad-block-s: 8px;
+$button-pad-inline-s: 12px;
+$button-pad-block-m: 10px;
+$button-pad-inline-m: 16px;
+$button-pad-block-l: 12px;
+$button-pad-inline-l: 20px;
+
+// Transitions
+$button-transition-duration: 120ms;
+$button-transition-ease: ease-out;
+
+// Internals
+$button-gap: 8px;
+$button-spinner-size: 1em;
+$button-spinner-border: 2px;
+$button-spinner-anim-duration: 700ms;
+
+// Extras
+$button-icon-only-extra-padding: 2px; // extra inline padding to keep icon-only buttons square-ish
+$button-shape-square-radius: 4px; // radius for button_shape_square
+$button-icon-gap-tweak: 4px; // small spacing between icon and text when declared
+$button-link-hover-underline-thickness: 2px; // underline thickness on hover for link view
+
+/* Map SCSS tokens to CSS custom properties with button- prefix. Override in app-level CSS if needed. */
+:root {
+  /* Core palette */
+  /*
+    Make accent color track the app primary color dynamically.
+    If the app defines --app-primary or --color-primary, we use that.
+    Otherwise fall back to the SCSS token $button-color-accent.
+  */
+  --button-color-accent: var(--app-primary, var(--color-primary, #{$button-color-accent}));
+  --button-color-accent-contrast: #{$button-color-accent-contrast};
+  --button-color-neutral: #{$button-color-neutral};
+  --button-color-neutral-contrast: #{$button-color-neutral-contrast};
+  --button-color-success: #{$button-color-success};
+  --button-color-success-contrast: #{$button-color-success-contrast};
+  --button-color-warning: #{$button-color-warning};
+  --button-color-warning-contrast: #{$button-color-warning-contrast};
+  --button-color-danger: #{$button-color-danger};
+  --button-color-danger-contrast: #{$button-color-danger-contrast};
+
+  /* Backgrounds / borders */
+  --button-color-surface: #{$button-color-surface};
+  --button-color-surface-subtle: #{$button-color-surface-subtle};
+  --button-color-border: #{$button-color-border};
+  --button-color-text: #{$button-color-text};
+
+  /* Effects */
+  /*
+    Focus halo color derives from the current accent (can be overridden per tone).
+    Using color-mix at runtime allows the ring to follow any theme updates.
+  */
+  --button-focus-color: color-mix(in oklab, var(--button-color-accent) 35%, transparent);
+  --button-focus-inner-color: #{$button-focus-inner-color};
+  /* active composite shadow expressed via vars so it also adapts to theme */
+  --button-shadow-active: 0 0 0 2px var(--button-focus-inner-color), 0 0 0 4px var(--button-focus-color);
+
+  /* Sizing */
+  --button-radius: #{$button-radius};
+  --button-radius-pill: #{$button-radius-pill};
+  --button-font-family: #{$button-font-family};
+  --button-font-weight: #{$button-font-weight};
+  --button-font-size-s: #{$button-font-size-s};
+  --button-font-size-m: #{$button-font-size-m};
+  --button-font-size-l: #{$button-font-size-l};
+  --button-line-height: #{$button-line-height};
+  --button-pad-block-s: #{$button-pad-block-s};
+  --button-pad-inline-s: #{$button-pad-inline-s};
+  --button-pad-block-m: #{$button-pad-block-m};
+  --button-pad-inline-m: #{$button-pad-inline-m};
+  --button-pad-block-l: #{$button-pad-block-l};
+  --button-pad-inline-l: #{$button-pad-inline-l};
+
+  /* Transitions */
+  --button-transition-duration: #{$button-transition-duration};
+  --button-transition-ease: #{$button-transition-ease};
+
+  /* Extras */
+  --button-icon-only-extra-padding: #{$button-icon-only-extra-padding};
+  --button-shape-square-radius: #{$button-shape-square-radius};
+  --button-icon-gap-tweak: #{$button-icon-gap-tweak};
+  --button-link-hover-underline-thickness: #{$button-link-hover-underline-thickness};
+
+  --button-tone-accent-text: #ffffff;
+  --button-tone-neutral-text: #626262;
+  --button-tone-success-text: #ffffff;
+  --button-tone-warning-text: #ffffff;
+  --button-tone-danger-text: #ffffff;
+
+  --button-tone-accent-filled-fg: #ffffff;
+  --button-tone-neutral-filled-fg: var(--button-color-text, #e6e6e6);
+  --button-tone-success-filled-fg: #ffffff;
+  --button-tone-warning-filled-fg: #ffffff;
+  --button-tone-danger-filled-fg: #ffffff;
+}
+
+/*
+  Light-weight SCSS mixins
+  1) bg-with-mix      – fallback rgba + color-mix for hover/active backgrounds
+  2) view-filled      – common rules for filled view
+  3) tone             – set helper CSS variables for tones
+  4) button-size, icon-only-inline – unify sizing rules
+*/
+
+// 1) Fallback + color-mix background helper
+@mixin bg-with-mix($color, $percent, $fallback-alpha) {
+  background-color: rgba(0, 0, 0, $fallback-alpha);
+  background-color: color-mix(in oklab, #{$color} #{$percent}, transparent);
+}
+
+// 2) Common filled view rules
+@mixin view-filled() {
+  background-color: var(--button-btn-bg, #{$button-color-accent});
+  color:            var(--button-btn-fg, #{$button-color-accent-contrast});
+  border-color:     var(--button-btn-br, #{$button-color-accent});
+
+  &:hover  { filter: saturate(110%) brightness(1.02); }
+  &:active { filter: saturate(115%) brightness(0.98); }
+}
+
+// 3) Tone variables
+@mixin tone($bg, $fg, $br: null) {
+  --button-btn-bg: #{$bg};
+  --button-btn-fg: #{$fg};
+  --button-btn-br: #{if($br == null, $bg, $br)};
+  /* Default text color for non-filled views (outline/ghost/link/soft). Can be overridden downstream */
+  --button-view-text-color: #{$bg};
+  /* Derive focus color from current tone background */
+  --button-focus-color: color-mix(in oklab, #{$bg} 35%, transparent);
+}
+
+// 4) Sizing helpers
+@mixin button-size(
+  $pad-block-var,
+  $pad-inline-var,
+  $font-size-var,
+  $pad-block-fallback,
+  $pad-inline-fallback,
+  $font-size-fallback
+) {
+  padding-block:  var(--#{$pad-block-var}, #{$pad-block-fallback});
+  padding-inline: var(--#{$pad-inline-var}, #{$pad-inline-fallback});
+  font-size:      var(--#{$font-size-var}, #{$font-size-fallback});
+}
+
+@mixin icon-only-inline($pad-block-var, $pad-block-fallback) {
+  padding-inline: calc(var(--#{$pad-block-var}, #{$pad-block-fallback}) + var(--button-icon-only-extra-padding, #{$button-icon-only-extra-padding}));
+}
+
+.button {
+  /* SCSS-level defaults for frequently used constants (from tokens) */
+  $gap: $button-gap;
+  $spinner-size: $button-spinner-size;
+  $spinner-border: $button-spinner-border;
+  $spinner-anim-duration: $button-spinner-anim-duration;
+
+  /* Reset & base */
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $gap;
+  inline-size: auto;
+  min-inline-size: max-content;
+  block-size: auto;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  border-radius: var(--button-radius, #{$button-radius});
+  background-color: transparent;
+  color: var(--button-color-text, #{$button-color-text});
+  font-family: var(--button-font-family, #{$button-font-family});
+  font-variation-settings: 'wght' var(--button-font-weight, #{$button-font-weight});
+  line-height: var(--button-line-height, #{$button-line-height});
+  transition: background-color var(--button-transition-duration, #{$button-transition-duration}) var(--button-transition-ease, #{$button-transition-ease}),
+              color var(--button-transition-duration, #{$button-transition-duration}) var(--button-transition-ease, #{$button-transition-ease}),
+              border-color var(--button-transition-duration, #{$button-transition-duration}) var(--button-transition-ease, #{$button-transition-ease}),
+              box-shadow var(--button-transition-duration, #{$button-transition-duration}) var(--button-transition-ease, #{$button-transition-ease}),
+              opacity var(--button-transition-duration, #{$button-transition-duration}) var(--button-transition-ease, #{$button-transition-ease}),
+              transform var(--button-transition-duration, #{$button-transition-duration}) var(--button-transition-ease, #{$button-transition-ease});
+  will-change: transform;
+  transform: translateZ(0) scale(1);
+
+  /* default size is M */
+  @include button-size(
+    button-pad-block-m,
+    button-pad-inline-m,
+    button-font-size-m,
+    $button-pad-block-m,
+    $button-pad-inline-m,
+    $button-font-size-m
+  );
+
+  /* Sizing modifiers */
+  &.button_size_s { @include button-size(button-pad-block-s, button-pad-inline-s, button-font-size-s, $button-pad-block-s, $button-pad-inline-s, $button-font-size-s); }
+  &.button_size_m { @include button-size(button-pad-block-m, button-pad-inline-m, button-font-size-m, $button-pad-block-m, $button-pad-inline-m, $button-font-size-m); }
+  &.button_size_l { @include button-size(button-pad-block-l, button-pad-inline-l, button-font-size-l, $button-pad-block-l, $button-pad-inline-l, $button-font-size-l); }
+
+  /* Normalize icon sizes for raw <i> or <svg> used directly inside buttons */
+  --button-icon-size: 1.2em;
+  &.button_size_s { --button-icon-size: 1.1em; }
+  &.button_size_l { --button-icon-size: 1.3em; }
+  > i,
+  > svg {
+    inline-size: var(--button-icon-size);
+    block-size: var(--button-icon-size);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    line-height: 1;
+  }
+
+  /* Size aliases */
+  &.button_size_default { @include button-size(button-pad-block-m, button-pad-inline-m, button-font-size-m, $button-pad-block-m, $button-pad-inline-m, $button-font-size-m); }
+  &.button_size_sm { @include button-size(button-pad-block-s, button-pad-inline-s, button-font-size-s, $button-pad-block-s, $button-pad-inline-s, $button-font-size-s); }
+  &.button_size_lg { @include button-size(button-pad-block-l, button-pad-inline-l, button-font-size-l, $button-pad-block-l, $button-pad-inline-l, $button-font-size-l); }
+
+  /* Block-level (full width) */
+  &.button_block { inline-size: 100%; display: inline-flex; }
+
+  /* Icon-only modifier: makes a square button based on line-height + padding */
+  &.button_icon-only { @include icon-only-inline(button-pad-block-m, $button-pad-block-m); } /* keep square-ish */
+  &.button_size_s.button_icon-only { @include icon-only-inline(button-pad-block-s, $button-pad-block-s); }
+  &.button_size_l.button_icon-only { @include icon-only-inline(button-pad-block-l, $button-pad-block-l); }
+
+  /* Icon size variants */
+  &.button_size_icon    { @include button-size(button-pad-block-m, button-pad-block-m, button-font-size-m, $button-pad-block-m, $button-pad-block-m, $button-font-size-m); @include icon-only-inline(button-pad-block-m, $button-pad-block-m); }
+  &.button_size_icon-sm { @include button-size(button-pad-block-s, button-pad-block-s, button-font-size-s, $button-pad-block-s, $button-pad-block-s, $button-font-size-s); @include icon-only-inline(button-pad-block-s, $button-pad-block-s); }
+  &.button_size_icon-lg { @include button-size(button-pad-block-l, button-pad-block-l, button-font-size-l, $button-pad-block-l, $button-pad-block-l, $button-font-size-l); @include icon-only-inline(button-pad-block-l, $button-pad-block-l); }
+
+  &__icon { inline-size: 1em; block-size: 1em; display: inline-flex; align-items: center; justify-content: center; }
+  /* Ensure the icon box doesn't affect vertical rhythm and stays perfectly centered */
+  &__icon {
+    line-height: 1;
+    flex: 0 0 auto;
+  }
+  /* Normalize actual vector/icon element inside wrapper to fill the wrapper square */
+  &__icon > svg,
+  &__icon > i {
+    inline-size: 100%;
+    block-size: 100%;
+    display: block;
+    line-height: 1;
+  }
+  &__text { white-space: nowrap; }
+  &__spinner {
+    inline-size: $spinner-size;
+    block-size: $spinner-size;
+    display: block;
+    border-radius: 50%;
+    border: $spinner-border solid currentColor;
+    border-block-start-color: transparent;
+    /* Ensure rotation happens around center; pairing with translate in keyframes keeps centering intact */
+    transform-origin: 50% 50%;
+    animation: button-spin $spinner-anim-duration linear infinite;
+  }
+
+  /* Views and tones
+     Views: button_view_filled | button_view_outline | button_view_soft | button_view_ghost | button_view_link
+     Tones: button_tone_accent | button_tone_neutral | button_tone_success | button_tone_warning | button_tone_danger
+  */
+
+  /* Helper custom properties per tone (consumed by views) */
+  &.button_tone_accent  { @include tone(var(--button-color-accent, #{$button-color-accent}),  var(--button-color-accent-contrast, #{$button-color-accent-contrast})); }
+  &.button_tone_neutral { @include tone(var(--button-color-neutral, #{$button-color-neutral}),  var(--button-color-neutral-contrast, #{$button-color-neutral-contrast})); }
+  &.button_tone_success { @include tone(var(--button-color-success, #{$button-color-success}),  var(--button-color-success-contrast, #{$button-color-success-contrast})); }
+  &.button_tone_warning { @include tone(var(--button-color-warning, #{$button-color-warning}),  var(--button-color-warning-contrast, #{$button-color-warning-contrast})); }
+  &.button_tone_danger  { @include tone(var(--button-color-danger, #{$button-color-danger}),  var(--button-color-danger-contrast, #{$button-color-danger-contrast})); }
+  
+  /* Per-tone text assignments via variables (no hardcoded colors) */
+  &.button_tone_accent  { --button-view-text-color: var(--button-tone-accent-text, #ffffff);  --button-btn-fg: var(--button-tone-accent-filled-fg, #ffffff); }
+  &.button_tone_neutral { --button-view-text-color: var(--button-tone-neutral-text, #626262); --button-btn-fg: var(--button-tone-neutral-filled-fg, #626262); }
+  &.button_tone_success { --button-view-text-color: var(--button-tone-success-text, #ffffff); --button-btn-fg: var(--button-tone-success-filled-fg, #ffffff); }
+  &.button_tone_warning { --button-view-text-color: var(--button-tone-warning-text, #ffffff); --button-btn-fg: var(--button-tone-warning-filled-fg, #ffffff); }
+  &.button_tone_danger  { --button-view-text-color: var(--button-tone-danger-text, #ffffff);  --button-btn-fg: var(--button-tone-danger-filled-fg, #ffffff); }
+
+  /* Default tone if none specified */
+  &:not(.button_tone_accent, .button_tone_neutral, .button_tone_success, .button_tone_warning, .button_tone_danger) {
+    @include tone(var(--button-color-accent, #{$button-color-accent}), var(--button-color-accent-contrast, #{$button-color-accent-contrast}));
+  }
+
+  /* FILLED view */
+  &.button_view_filled { @include view-filled(); }
+
+  /* OUTLINE view */
+  &.button_view_outline {
+    background-color: transparent;
+    /* Use tone background color for text */
+    color: var(--button-btn-bg, #{$button-color-accent});
+    border-color: var(--button-btn-br, #{$button-color-accent});
+
+    /* Fallback for browsers without color-mix */
+    &:hover  { @include bg-with-mix(var(--button-btn-bg, #{$button-color-accent}), 12%, 0.02); }
+    &:active { @include bg-with-mix(var(--button-btn-bg, #{$button-color-accent}), 20%, 0.04); }
+  }
+
+  /* SOFT view (subtle background) */
+  &.button_view_soft {
+    /* Fallbacks first */
+    background-color: var(--button-color-surface-subtle, #{$button-color-surface-subtle});
+    color: var(--button-view-text-color, var(--button-color-text, #{$button-color-text}));
+    border-color: rgba(0,0,0,0.06);
+    /* Preferred rendering using color-mix */
+    background-color: color-mix(in oklab, var(--button-btn-bg, #{$button-color-accent}) 16%, var(--button-color-surface-subtle, #{$button-color-surface-subtle}));
+    /* Respect override when provided; otherwise compute subtle tone-based text */
+    color: var(--button-view-text-color, color-mix(in oklab, var(--button-btn-bg, #{$button-color-accent}) 85%, var(--button-color-text, #{$button-color-text})));
+    border-color: color-mix(in oklab, var(--button-btn-bg, #{$button-color-accent}) 35%, transparent);
+
+    &:hover { background-color: color-mix(in oklab, var(--button-btn-bg, #{$button-color-accent}) 22%, var(--button-color-surface-subtle, #{$button-color-surface-subtle})); }
+    &:active { background-color: color-mix(in oklab, var(--button-btn-bg, #{$button-color-accent}) 28%, var(--button-color-surface-subtle, #{$button-color-surface-subtle})); }
+  }
+
+  /* GHOST view (no border, transparent bg) */
+  &.button_view_ghost {
+    background-color: transparent;
+    /* Use tone background color for text */
+    color: var(--button-btn-bg, #{$button-color-accent});
+    border-color: transparent;
+
+    /* Fallback */
+    &:hover  { @include bg-with-mix(var(--button-btn-bg, #{$button-color-accent}), 10%, 0.02); }
+    &:active { @include bg-with-mix(var(--button-btn-bg, #{$button-color-accent}), 16%, 0.04); }
+  }
+
+  &.button_view_ghost.button_tone_accent {
+    color: var(--button-color-accent, #{$button-color-accent});
+
+    &:hover  {
+      background-color: var(--button-color-surface-subtle, #{$button-color-surface-subtle});
+    }
+    &:active {
+      background-color: var(--button-color-border, #{$button-color-border});
+    }
+  }
+
+  /* LINK view */
+  &.button_view_link {
+    background: none;
+    /* Use tone background color for text */
+    color: var(--button-btn-bg, #{$button-color-accent});
+    border: none;
+    padding-inline: 0; /* link buttons have no horizontal padding */
+    text-decoration: underline;
+
+    &:hover { text-decoration-thickness: var(--button-link-hover-underline-thickness, #{$button-link-hover-underline-thickness}); }
+    &:active { opacity: 0.85; }
+    /* Dedicated focus for link-style buttons */
+    &:focus-visible {
+      outline: 2px solid var(--button-focus-color, #{$button-focus-color});
+      outline-offset: 2px;
+      box-shadow: none;
+      text-decoration-thickness: var(--button-link-hover-underline-thickness, #{$button-link-hover-underline-thickness});
+    }
+  }
+
+  /* Micro interaction: subtle shrink on hover/press (except link view) */
+  &:not(.button_view_link) {
+    &:hover { transform: scale(0.985); }
+    &:active { transform: scale(0.97); }
+  }
+
+  /* Focus style – visible only when keyboard focusing (aligns with visual tone) */
+  &:focus { outline: none; }
+  /* Suppress focus styles when the focus isn't keyboard-induced */
+  &:focus:not(:focus-visible) { outline: none; box-shadow: none; }
+  &:focus-visible {
+    box-shadow:
+      0 0 0 2px var(--button-focus-inner-color, #{$button-focus-inner-color}),
+      0 0 0 4px var(--button-focus-color, #{$button-focus-color});
+  }
+
+  /* Firefox: remove default inner focus padding/border on buttons */
+  &::-moz-focus-inner { border: 0; padding: 0; }
+
+  /* Disabled state (native and aria) */
+  &:disabled,
+  &[aria-disabled="true"],
+  &.button_disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+    filter: none;
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  /* Loading state: show spinner, reduce text opacity and block interactions */
+  &.button_loading {
+    position: relative;
+    pointer-events: none;
+
+    .button__text { opacity: 0.0; }
+    .button__spinner { position: absolute; inset-block-start: 50%; inset-inline-start: 50%; transform: translate(-50%, -50%); }
+  }
+
+  /* Shape modifiers (optional) */
+  &.button_shape_pill { border-radius: var(--button-radius-pill, #{$button-radius-pill}); }
+  &.button_shape_square { border-radius: var(--button-shape-square-radius, #{$button-shape-square-radius}); }
+
+  /* Variant aliases (for external API compatibility):
+     default | outline | ghost | destructive | secondary | link */
+  &.button_variant_default { /* accent filled */
+    @include tone(var(--button-color-accent, #{$button-color-accent}), var(--button-color-accent-contrast, #{$button-color-accent-contrast}));
+    @include view-filled();
+  }
+  &.button_variant_outline { /* accent outline */
+    @include tone(var(--button-color-accent, #{$button-color-accent}), var(--button-color-accent-contrast, #{$button-color-accent-contrast}));
+    background-color: transparent;
+    color: var(--button-btn-bg, #{$button-color-accent});
+    border-color: var(--button-btn-br, #{$button-color-accent});
+    &:hover  { @include bg-with-mix(var(--button-btn-bg, #{$button-color-accent}), 12%, 0.02); }
+    &:active { @include bg-with-mix(var(--button-btn-bg, #{$button-color-accent}), 20%, 0.04); }
+  }
+  &.button_variant_ghost { /* accent ghost */
+    @include tone(var(--button-color-accent, #{$button-color-accent}), var(--button-color-accent-contrast, #{$button-color-accent-contrast}));
+    background-color: transparent;
+    color: var(--button-btn-bg, #{$button-color-accent});
+    border-color: transparent;
+    &:hover  { @include bg-with-mix(var(--button-btn-bg, #{$button-color-accent}), 10%, 0.02); }
+    &:active { @include bg-with-mix(var(--button-btn-bg, #{$button-color-accent}), 16%, 0.04); }
+  }
+  &.button_variant_destructive { /* danger filled */
+    @include tone(var(--button-color-danger, #{$button-color-danger}), var(--button-color-danger-contrast, #{$button-color-danger-contrast}));
+    @include view-filled();
+  }
+  &.button_variant_secondary { /* neutral soft */
+    --button-btn-bg: var(--button-color-neutral, #{$button-color-neutral});
+    background-color: var(--button-color-surface-subtle, #{$button-color-surface-subtle});
+    color: color-mix(in oklab, var(--button-btn-bg, #{$button-color-neutral}) 85%, var(--button-color-text, #{$button-color-text}));
+    border-color: color-mix(in oklab, var(--button-btn-bg, #{$button-color-neutral}) 35%, transparent);
+    &:hover { background-color: color-mix(in oklab, var(--button-btn-bg, #{$button-color-neutral}) 22%, var(--button-color-surface-subtle, #{$button-color-surface-subtle})); }
+    &:active { background-color: color-mix(in oklab, var(--button-btn-bg, #{$button-color-neutral}) 28%, var(--button-color-surface-subtle, #{$button-color-surface-subtle})); }
+  }
+  &.button_variant_link { /* accent link */
+    --button-btn-bg: var(--button-color-accent, #{$button-color-accent});
+    background: none;
+    color: var(--button-btn-bg, #{$button-color-accent});
+    border: none;
+    padding-inline: 0;
+    text-decoration: underline;
+    &:hover { text-decoration-thickness: 2px; }
+    &:active { opacity: 0.85; }
+  }
+}
+
+/*
+  Important: animation modifies transform, which also handles centering via translate().
+  To avoid overriding the translate used for centering, include translate in the keyframes.
+*/
+@keyframes button-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Button groups (simple inline grouping) */
+.button-group { display: inline-flex; align-items: stretch; }
+.button-group > .button { border-radius: 0; }
+.button-group > .button:first-child { border-start-start-radius: var(--button-radius, #{$button-radius}); border-end-start-radius: var(--button-radius, #{$button-radius}); }
+.button-group > .button:last-child { border-start-end-radius: var(--button-radius, #{$button-radius}); border-end-end-radius: var(--button-radius, #{$button-radius}); }
+.button-group > .button + .button { margin-inline-start: -1px; }
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .button { border: 1px solid ButtonText; }
+  .button:focus-visible { outline: 2px solid Highlight; outline-offset: 2px; box-shadow: none; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .button { transition: none; }
+  .button__spinner { animation-duration: 1.4s; }
+}

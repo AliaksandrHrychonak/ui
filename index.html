@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div style="flex-direction: column; display: flex; gap: 50px; padding: 100px; font-family: Arial, Helvetica, sans-serif;">
+        <h1>Button Component Demo</h1>
+
+                        
+                    <div style="flex-direction: column; display: flex; gap: 30px;">
+                <h2>View: filled</h2>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>No icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_filled button_tone_accent button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_filled button_tone_neutral button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_filled button_tone_success button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_filled button_tone_warning button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_filled button_tone_danger button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Leading icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_filled button_tone_accent button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_filled button_tone_neutral button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_filled button_tone_success button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_filled button_tone_warning button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_filled button_tone_danger button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Trailing icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_filled button_tone_accent button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_filled button_tone_neutral button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_filled button_tone_success button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_filled button_tone_warning button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_filled button_tone_danger button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Both icons</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_filled button_tone_accent button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_filled button_tone_neutral button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_filled button_tone_success button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_filled button_tone_warning button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_filled button_tone_danger button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Icon only (no text)</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_filled button_tone_accent button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_filled button_tone_neutral button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_filled button_tone_success button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_filled button_tone_warning button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_filled button_tone_danger button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+                    <div style="flex-direction: column; display: flex; gap: 30px;">
+                <h2>View: outline</h2>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>No icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_outline button_tone_accent button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_outline button_tone_neutral button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_outline button_tone_success button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_outline button_tone_warning button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_outline button_tone_danger button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Leading icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_outline button_tone_accent button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_outline button_tone_neutral button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_outline button_tone_success button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_outline button_tone_warning button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_outline button_tone_danger button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Trailing icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_outline button_tone_accent button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_outline button_tone_neutral button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_outline button_tone_success button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_outline button_tone_warning button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_outline button_tone_danger button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Both icons</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_outline button_tone_accent button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_outline button_tone_neutral button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_outline button_tone_success button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_outline button_tone_warning button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_outline button_tone_danger button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Icon only (no text)</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_outline button_tone_accent button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_outline button_tone_neutral button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_outline button_tone_success button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_outline button_tone_warning button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_outline button_tone_danger button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+                    <div style="flex-direction: column; display: flex; gap: 30px;">
+                <h2>View: soft</h2>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>No icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_soft button_tone_accent button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_soft button_tone_neutral button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_soft button_tone_success button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_soft button_tone_warning button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_soft button_tone_danger button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Leading icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_soft button_tone_accent button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_soft button_tone_neutral button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_soft button_tone_success button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_soft button_tone_warning button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_soft button_tone_danger button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Trailing icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_soft button_tone_accent button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_soft button_tone_neutral button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_soft button_tone_success button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_soft button_tone_warning button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_soft button_tone_danger button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Both icons</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_soft button_tone_accent button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_soft button_tone_neutral button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_soft button_tone_success button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_soft button_tone_warning button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_soft button_tone_danger button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Icon only (no text)</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_soft button_tone_accent button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_soft button_tone_neutral button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_soft button_tone_success button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_soft button_tone_warning button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_soft button_tone_danger button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+                    <div style="flex-direction: column; display: flex; gap: 30px;">
+                <h2>View: ghost</h2>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>No icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_ghost button_tone_accent button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_ghost button_tone_neutral button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_ghost button_tone_success button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_ghost button_tone_warning button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_ghost button_tone_danger button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Leading icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_ghost button_tone_accent button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_ghost button_tone_neutral button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_ghost button_tone_success button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_ghost button_tone_warning button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_ghost button_tone_danger button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Trailing icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_ghost button_tone_accent button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_ghost button_tone_neutral button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_ghost button_tone_success button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_ghost button_tone_warning button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_ghost button_tone_danger button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Both icons</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_ghost button_tone_accent button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_ghost button_tone_neutral button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_ghost button_tone_success button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_ghost button_tone_warning button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_ghost button_tone_danger button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Icon only (no text)</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_ghost button_tone_accent button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_ghost button_tone_neutral button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_ghost button_tone_success button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_ghost button_tone_warning button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_ghost button_tone_danger button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+                    <div style="flex-direction: column; display: flex; gap: 30px;">
+                <h2>View: link</h2>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>No icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_link button_tone_accent button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_link button_tone_neutral button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_link button_tone_success button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_link button_tone_warning button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_link button_tone_danger button_size_m" type="button">  <span class="button__text">Demo</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Leading icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_link button_tone_accent button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_link button_tone_neutral button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_link button_tone_success button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_link button_tone_warning button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_link button_tone_danger button_size_m button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Trailing icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_link button_tone_accent button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_link button_tone_neutral button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_link button_tone_success button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_link button_tone_warning button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_link button_tone_danger button_size_m button_has-trailing-icon" type="button">  <span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Both icons</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_link button_tone_accent button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_link button_tone_neutral button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_link button_tone_success button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_link button_tone_warning button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_link button_tone_danger button_size_m button_has-leading-icon button_has-trailing-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span><span class="button__text">Demo</span><span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+
+                                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Icon only (no text)</h4>
+                    <div style="gap: 30px; display: flex;">
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>accent</small>
+                                <button class="
+  button button_view_link button_tone_accent button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>neutral</small>
+                                <button class="
+  button button_view_link button_tone_neutral button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>success</small>
+                                <button class="
+  button button_view_link button_tone_success button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>warning</small>
+                                <button class="
+  button button_view_link button_tone_warning button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                                    <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>danger</small>
+                                <button class="
+  button button_view_link button_tone_danger button_size_m button_icon-only button_has-leading-icon" type="button">  <span class="button__icon" aria-hidden="true"><svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1.29285 0.353515L7.292846 6.35371L1.29324 12.3535" stroke="currentColor"></path>
+</svg>
+</span></button>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+            </div>
+</body>
+</html>
