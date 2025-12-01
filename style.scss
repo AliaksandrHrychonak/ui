@@ -139,7 +139,7 @@ $button-link-hover-underline-thickness: 2px; // underline thickness on hover for
   --button-link-hover-underline-thickness: #{$button-link-hover-underline-thickness};
 
   --button-tone-accent-text: #ffffff;
-  --button-tone-neutral-text: #626262;
+    --button-tone-neutral-text: var(--button-color-text, #2C2C2C);
   --button-tone-success-text: #ffffff;
   --button-tone-warning-text: #ffffff;
   --button-tone-danger-text: #ffffff;

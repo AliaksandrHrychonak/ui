@@ -1179,3 +1179,111 @@
             </div>
 </body>
 </html>
+
+<!-- 
+    {# BUTTON DEMO - START #}
+    <div style="flex-direction: column; display: flex; gap: 50px;">
+        <h1>Button Component Demo</h1>
+
+        {% set views = ['filled', 'outline', 'soft', 'ghost', 'link'] %}
+        {% set tones = ['accent', 'neutral', 'success', 'warning', 'danger'] %}
+        {% set icon = source('@assets/common/icons/arrow/right-arrow.svg') %}
+
+        {% for view in views %}
+            <div style="flex-direction: column; display: flex; gap: 30px;">
+                <h2 >View: {{ view }}</h2>
+
+                {# No icon #}
+                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4 >No icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                        {% for tone in tones %}
+                            <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>{{ tone }}</small>
+                                {{ Button.button({
+                                    text: 'Demo',
+                                    view: view,
+                                    tone: tone
+                                }) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {# Leading icon #}
+                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Leading icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                        {% for tone in tones %}
+                            <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>{{ tone }}</small>
+                                {{ Button.button({
+                                    text: 'Demo',
+                                    view: view,
+                                    tone: tone,
+                                    leading_icon: icon
+                                }) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {# Trailing icon #}
+                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Trailing icon</h4>
+                    <div style="gap: 30px; display: flex;">
+                        {% for tone in tones %}
+                            <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>{{ tone }}</small>
+                                {{ Button.button({
+                                    text: 'Demo',
+                                    view: view,
+                                    tone: tone,
+                                    trailing_icon: icon
+                                }) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {# Both icons #}
+                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Both icons</h4>
+                    <div style="gap: 30px; display: flex;">
+                        {% for tone in tones %}
+                            <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>{{ tone }}</small>
+                                {{ Button.button({
+                                    text: 'Demo',
+                                    view: view,
+                                    tone: tone,
+                                    leading_icon: icon,
+                                    trailing_icon: icon
+                                }) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                {# Icon only #}
+                <div style="flex-direction: column; display: flex; gap: 15px;">
+                    <h4>Icon only (no text)</h4>
+                    <div style="gap: 30px; display: flex;">
+                        {% for tone in tones %}
+                            <div style="flex-direction: column; display: flex; gap: 10px;">
+                                <small>{{ tone }}</small>
+                                {{ Button.button({
+                                    view: view,
+                                    tone: tone,
+                                    icon_only: true,
+                                    leading_icon: icon
+                                }) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {# BUTTON DEMO - END #}
+-->
