@@ -76,7 +76,7 @@
   --button-icon-gap-tweak: 4px;
   --button-link-hover-underline-thickness: 2px;
   --button-tone-accent-text: #ffffff;
-  --button-tone-neutral-text: #626262;
+  --button-tone-neutral-text: var(--button-color-text, #2C2C2C);
   --button-tone-success-text: #ffffff;
   --button-tone-warning-text: #ffffff;
   --button-tone-danger-text: #ffffff;
