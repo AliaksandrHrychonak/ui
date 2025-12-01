@@ -76,12 +76,12 @@
   --button-icon-gap-tweak: 4px;
   --button-link-hover-underline-thickness: 2px;
   --button-tone-accent-text: #ffffff;
-  --button-tone-neutral-text: var(--button-color-text, #2C2C2C);
+  --button-tone-neutral-text: #2C2C2C;
   --button-tone-success-text: #ffffff;
   --button-tone-warning-text: #ffffff;
   --button-tone-danger-text: #ffffff;
   --button-tone-accent-filled-fg: #ffffff;
-  --button-tone-neutral-filled-fg: var(--button-color-text, #e6e6e6);
+  --button-tone-neutral-filled-fg: #2C2C2C;
   --button-tone-success-filled-fg: #ffffff;
   --button-tone-warning-filled-fg: #ffffff;
   --button-tone-danger-filled-fg: #ffffff;
@@ -151,6 +151,7 @@
   /* OUTLINE view */
   /* SOFT view (subtle background) */
   /* GHOST view (no border, transparent bg) */
+  /* Ensure neutral tone text is always #2C2C2C across views */
   /* LINK view */
   /* Micro interaction: subtle shrink on hover/press (except link view) */
   /* Focus style – visible only when keyboard focusing (aligns with visual tone) */
@@ -320,8 +321,8 @@
   --button-btn-fg: var(--button-tone-accent-filled-fg, #ffffff);
 }
 .button.button_tone_neutral {
-  --button-view-text-color: var(--button-tone-neutral-text, #626262);
-  --button-btn-fg: var(--button-tone-neutral-filled-fg, #626262);
+  --button-view-text-color: var(--button-tone-neutral-text, #2C2C2C);
+  --button-btn-fg: var(--button-tone-neutral-filled-fg, #2C2C2C);
 }
 .button.button_tone_success {
   --button-view-text-color: var(--button-tone-success-text, #ffffff);
@@ -410,6 +411,15 @@
 }
 .button.button_view_ghost.button_tone_accent:active {
   background-color: var(--button-color-border, #e5e7eb);
+}
+.button.button_view_outline.button_tone_neutral {
+  color: #2C2C2C;
+}
+.button.button_view_ghost.button_tone_neutral {
+  color: #2C2C2C;
+}
+.button.button_view_link.button_tone_neutral {
+  color: #2C2C2C;
 }
 .button.button_view_link {
   background: none;
@@ -557,7 +567,7 @@
 .button.button_variant_secondary { /* neutral soft */
   --button-btn-bg: var(--button-color-neutral, #e6e6e6);
   background-color: var(--button-color-surface-subtle, #f3f4f6);
-  color: color-mix(in oklab, var(--button-btn-bg, #e6e6e6) 85%, var(--button-color-text, #2C2C2C));
+  color: #2C2C2C;
   border-color: color-mix(in oklab, var(--button-btn-bg, #e6e6e6) 35%, transparent);
 }
 .button.button_variant_secondary:hover {

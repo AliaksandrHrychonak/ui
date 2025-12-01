@@ -139,13 +139,13 @@ $button-link-hover-underline-thickness: 2px; // underline thickness on hover for
   --button-link-hover-underline-thickness: #{$button-link-hover-underline-thickness};
 
   --button-tone-accent-text: #ffffff;
-    --button-tone-neutral-text: var(--button-color-text, #2C2C2C);
+  --button-tone-neutral-text: #2C2C2C;
   --button-tone-success-text: #ffffff;
   --button-tone-warning-text: #ffffff;
   --button-tone-danger-text: #ffffff;
 
   --button-tone-accent-filled-fg: #ffffff;
-  --button-tone-neutral-filled-fg: var(--button-color-text, #e6e6e6);
+  --button-tone-neutral-filled-fg: #2C2C2C;
   --button-tone-success-filled-fg: #ffffff;
   --button-tone-warning-filled-fg: #ffffff;
   --button-tone-danger-filled-fg: #ffffff;
@@ -331,7 +331,7 @@ $button-link-hover-underline-thickness: 2px; // underline thickness on hover for
   
   /* Per-tone text assignments via variables (no hardcoded colors) */
   &.button_tone_accent  { --button-view-text-color: var(--button-tone-accent-text, #ffffff);  --button-btn-fg: var(--button-tone-accent-filled-fg, #ffffff); }
-  &.button_tone_neutral { --button-view-text-color: var(--button-tone-neutral-text, #626262); --button-btn-fg: var(--button-tone-neutral-filled-fg, #626262); }
+  &.button_tone_neutral { --button-view-text-color: var(--button-tone-neutral-text, #2C2C2C); --button-btn-fg: var(--button-tone-neutral-filled-fg, #2C2C2C); }
   &.button_tone_success { --button-view-text-color: var(--button-tone-success-text, #ffffff); --button-btn-fg: var(--button-tone-success-filled-fg, #ffffff); }
   &.button_tone_warning { --button-view-text-color: var(--button-tone-warning-text, #ffffff); --button-btn-fg: var(--button-tone-warning-filled-fg, #ffffff); }
   &.button_tone_danger  { --button-view-text-color: var(--button-tone-danger-text, #ffffff);  --button-btn-fg: var(--button-tone-danger-filled-fg, #ffffff); }
@@ -394,6 +394,11 @@ $button-link-hover-underline-thickness: 2px; // underline thickness on hover for
       background-color: var(--button-color-border, #{$button-color-border});
     }
   }
+
+  /* Ensure neutral tone text is always #2C2C2C across views */
+  &.button_view_outline.button_tone_neutral { color: #2C2C2C; }
+  &.button_view_ghost.button_tone_neutral   { color: #2C2C2C; }
+  &.button_view_link.button_tone_neutral    { color: #2C2C2C; }
 
   /* LINK view */
   &.button_view_link {
@@ -487,7 +492,7 @@ $button-link-hover-underline-thickness: 2px; // underline thickness on hover for
   &.button_variant_secondary { /* neutral soft */
     --button-btn-bg: var(--button-color-neutral, #{$button-color-neutral});
     background-color: var(--button-color-surface-subtle, #{$button-color-surface-subtle});
-    color: color-mix(in oklab, var(--button-btn-bg, #{$button-color-neutral}) 85%, var(--button-color-text, #{$button-color-text}));
+    color: #2C2C2C;
     border-color: color-mix(in oklab, var(--button-btn-bg, #{$button-color-neutral}) 35%, transparent);
     &:hover { background-color: color-mix(in oklab, var(--button-btn-bg, #{$button-color-neutral}) 22%, var(--button-color-surface-subtle, #{$button-color-surface-subtle})); }
     &:active { background-color: color-mix(in oklab, var(--button-btn-bg, #{$button-color-neutral}) 28%, var(--button-color-surface-subtle, #{$button-color-surface-subtle})); }
