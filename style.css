@@ -127,7 +127,7 @@ html {
   --button-font-size-s: 14px;
   --button-font-size-m: 14px;
   --button-font-size-l: 16px;
-  --button-line-height: 1;
+  --button-line-height: 1.2;
   --button-pad-block-s: 6px;
   --button-pad-inline-s: 8px;
   --button-pad-block-m: 6px;
@@ -187,7 +187,7 @@ html {
   font-family: var(--button-font-family, InterVariable, Helvetica, Arial, sans-serif);
   font-variation-settings: "wght" var(--button-font-weight, 500);
   font-weight: var(--button-font-weight, 500);
-  line-height: var(--button-line-height, 1);
+  line-height: var(--button-line-height, 1.2);
   transition: background-color var(--button-transition-duration, 120ms) var(--button-transition-ease, ease-out), color var(--button-transition-duration, 120ms) var(--button-transition-ease, ease-out), border-color var(--button-transition-duration, 120ms) var(--button-transition-ease, ease-out), box-shadow var(--button-transition-duration, 120ms) var(--button-transition-ease, ease-out), opacity var(--button-transition-duration, 120ms) var(--button-transition-ease, ease-out), transform var(--button-transition-duration, 120ms) var(--button-transition-ease, ease-out);
   will-change: transform;
   transform: translateZ(0) scale(1);
