@@ -1,11 +1,109 @@
 @charset "UTF-8";
 @font-face {
-  font-family: "Helvetica Now Variable";
-  src: url("Helvetica-Now-Var.ttf") format("truetype");
-  font-weight: 100 900;
+  font-family: InterVariable;
   font-style: normal;
+  font-weight: 100 900;
   font-display: swap;
+  src: local("Inter Variable"), local("InterVariable"), url("InterVariable.woff2") format("woff2-variations"), url("InterVariable.woff2") format("woff2"), url("InterVariable.ttf") format("truetype-variations"), url("InterVariable.ttf") format("truetype");
 }
+html {
+  font-family: InterVariable, Courier, monospace;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+}
+
+:root {
+  /* Base colors */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  /* Brand colors */
+  --brand-lightest: #F7F5FD;
+  --brand-lighter: #D0C6F2;
+  --brand-light: #AC9CE1;
+  --brand-medium-light: #8B78CB;
+  --brand-base: #6D59B0;
+  --brand-medium-dark: #5F4D99;
+  --brand-dark: #504181;
+  --brand-darkest: #41356A;
+  --brand-contrast: #FFFFFF;
+  /* Neutral colors */
+  --neutral-lightest: #F4F4F4;
+  --neutral-lighter: #EBEBEB;
+  --neutral-light: #CCCCCC;
+  --neutral-medium-light: #969696;
+  --neutral-medium: #777777;
+  --neutral-medium-dark: #585858;
+  --neutral-dark: #393939;
+  --neutral-darkest: #1A1A1A;
+  /* Success colors */
+  --success-lightest: #E8FAE6;
+  --success-lighter: #ACF0AD;
+  --success-light: #73E583;
+  --success-medium-light: #39DB64;
+  --success-base: #00D051;
+  --success-medium-dark: #00B43C;
+  --success-dark: #00992B;
+  --success-darkest: #007D1C;
+  --success-contrast: #FFFFFF;
+  /* Warning colors */
+  --warning-lightest: #FFF6D9;
+  --warning-lighter: #FFE6A3;
+  --warning-light: #FFD36C;
+  --warning-medium-light: #FFBE3D;
+  --warning-base: #F6A623;
+  --warning-medium-dark: #DD8A00;
+  --warning-dark: #BB6A00;
+  --warning-darkest: #994900;
+  --warning-contrast: #FFFFFF;
+  /* Error colors */
+  --error-lightest: #FEEEED;
+  --error-lighter: #FDC8C6;
+  --error-light: #FBA29E;
+  --error-medium-light: #FA7C76;
+  --error-base: #F8564E;
+  --error-medium-dark: #D74B44;
+  --error-dark: #B63F39;
+  --error-darkest: #95342F;
+  --error-contrast: #FFFFFF;
+  /* Semantic tokens for common use cases */
+  --text-primary: #1A1A1A;
+  --text-secondary: #585858;
+  --text-tertiary: #777777;
+  --text-disabled: #969696;
+  --text-inverse: #FFFFFF;
+  --background-primary: #FFFFFF;
+  --background-secondary: #F4F4F4;
+  --background-tertiary: #EBEBEB;
+  --background-inverse: #1A1A1A;
+  --border-subtle: #EBEBEB;
+  --border-default: #CCCCCC;
+  --border-strong: #585858;
+  --border-inverse: #FFFFFF;
+  /* Interactive states */
+  --interactive-primary: #6D59B0;
+  --interactive-primary-hover: #5F4D99;
+  --interactive-primary-active: #504181;
+  --interactive-primary-disabled: #CCCCCC;
+}
+
+.section-opportunities {
+  /* Brand colors */
+  --brand-lightest: #E8F5FD;
+  --brand-lighter: #B3DEFA;
+  --brand-light: #7DC7F7;
+  --brand-medium-light: #52AFF0;
+  --brand-base: #2392E0;
+  --brand-medium-dark: #1D7AC0;
+  --brand-dark: #1862A0;
+  --brand-darkest: #134A80;
+  /* Interactive states */
+  --interactive-primary: #2392E0;
+  --interactive-primary-hover: #1D7AC0;
+  --interactive-primary-active: #1862A0;
+}
+
 /*
   Button component (BEM)
   ------------------------------------------------------------
@@ -19,54 +117,23 @@
   - Sizes: s, m, l
   - Optional: block, icon-only, loading
 */
-/* SCSS tokens (single source of truth). These are the only hard values. */
-/* Map SCSS tokens to CSS custom properties with button- prefix. Override in app-level CSS if needed. */
+/* Map SCSS tokens to CSS custom properties with button- prefix. Colors must come only from theme variables. */
 :root {
-  /* Core palette */
-  /*
-    Make accent color track the app primary color dynamically.
-    If the app defines --app-primary or --color-primary, we use that.
-    Otherwise fall back to the SCSS token $button-color-accent.
-  */
-  --button-color-accent: var(--app-primary, var(--color-primary, #6d59ab));
-  --button-color-accent-contrast: #ffffff;
-  --button-color-neutral: #e6e6e6;
-  --button-color-neutral-contrast: #d5d5d5;
-  --button-color-success: #00D051;
-  --button-color-success-contrast: #ffffff;
-  --button-color-warning: #F7941D;
-  --button-color-warning-contrast: #ffffff;
-  --button-color-danger: #F8564E;
-  --button-color-danger-contrast: #ffffff;
-  /* Backgrounds / borders */
-  --button-color-surface: #ffffff;
-  --button-color-surface-subtle: #f3f4f6;
-  --button-color-border: #e5e7eb;
-  --button-color-text: #2C2C2C;
-  /* Effects */
-  /*
-    Focus halo color derives from the current accent (can be overridden per tone).
-    Using color-mix at runtime allows the ring to follow any theme updates.
-  */
-  --button-focus-color: color-mix(in oklab, var(--button-color-accent) 35%, transparent);
-  --button-focus-inner-color: #ffffff;
-  /* active composite shadow expressed via vars so it also adapts to theme */
-  --button-shadow-active: 0 0 0 2px var(--button-focus-inner-color), 0 0 0 4px var(--button-focus-color);
   /* Sizing */
   --button-radius: 4px;
-  --button-radius-pill: 999px;
-  --button-font-family: Helvetica Now Variable, Helvetica, Arial, sans-serif;
-  --button-font-weight: 400;
+  --button-radius-pill: 50%;
+  --button-font-family: InterVariable, Helvetica, Arial, sans-serif;
+  --button-font-weight: 500;
   --button-font-size-s: 14px;
-  --button-font-size-m: 16px;
-  --button-font-size-l: 18px;
-  --button-line-height: 1.2;
-  --button-pad-block-s: 8px;
-  --button-pad-inline-s: 12px;
-  --button-pad-block-m: 10px;
-  --button-pad-inline-m: 16px;
-  --button-pad-block-l: 12px;
-  --button-pad-inline-l: 20px;
+  --button-font-size-m: 14px;
+  --button-font-size-l: 16px;
+  --button-line-height: 1;
+  --button-pad-block-s: 6px;
+  --button-pad-inline-s: 8px;
+  --button-pad-block-m: 6px;
+  --button-pad-inline-m: 10px;
+  --button-pad-block-l: 8px;
+  --button-pad-inline-l: 12px;
   /* Transitions */
   --button-transition-duration: 120ms;
   --button-transition-ease: ease-out;
@@ -74,26 +141,23 @@
   --button-icon-only-extra-padding: 2px;
   --button-shape-square-radius: 4px;
   --button-icon-gap-tweak: 4px;
-  --button-link-hover-underline-thickness: 2px;
-  --button-tone-accent-text: #ffffff;
-  --button-tone-neutral-text: #2C2C2C;
-  --button-tone-success-text: #ffffff;
-  --button-tone-warning-text: #ffffff;
-  --button-tone-danger-text: #ffffff;
-  --button-tone-accent-filled-fg: #ffffff;
-  --button-tone-neutral-filled-fg: #2C2C2C;
-  --button-tone-success-filled-fg: #ffffff;
-  --button-tone-warning-filled-fg: #ffffff;
-  --button-tone-danger-filled-fg: #ffffff;
 }
 
-/*
+/*  
   Light-weight SCSS mixins
-  1) bg-with-mix      – fallback rgba + color-mix for hover/active backgrounds
-  2) view-filled      – common rules for filled view
-  3) tone             – set helper CSS variables for tones
-  4) button-size, icon-only-inline – unify sizing rules
+  - button-size, icon-only-inline – unify sizing rules
 */
+/* Unified filled view states (to avoid duplication across tones)
+   Parameters:
+   - $base:  CSS color or CSS variable for the base background (e.g., var(--interactive-primary))
+   - $hover: optional CSS color/var for hover background (e.g., var(--interactive-primary-hover)); if null, falls back to $base
+   - $fg:    CSS color/var for foreground/text (e.g., var(--brand-contrast))
+   - $focus_outline_opacity: numeric 0..1 for outline color mix from $base
+   - $disabled_bg_opacity:   numeric 0..1 for disabled background mix from $base
+ */
+/* Soft view states */
+/* Ghost view states */
+/* Outline view states */
 .button {
   /* SCSS-level defaults for frequently used constants (from tokens) */
   /* Reset & base */
@@ -105,7 +169,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   inline-size: auto;
   min-inline-size: -moz-max-content;
   min-inline-size: max-content;
@@ -119,17 +183,18 @@
   border: 1px solid transparent;
   border-radius: var(--button-radius, 4px);
   background-color: transparent;
-  color: var(--button-color-text, #2C2C2C);
-  font-family: var(--button-font-family, Helvetica Now Variable, Helvetica, Arial, sans-serif);
-  font-variation-settings: "wght" var(--button-font-weight, 400);
-  line-height: var(--button-line-height, 1.2);
+  color: var(--text-primary);
+  font-family: var(--button-font-family, InterVariable, Helvetica, Arial, sans-serif);
+  font-variation-settings: "wght" var(--button-font-weight, 500);
+  font-weight: var(--button-font-weight, 500);
+  line-height: var(--button-line-height, 1);
   transition: background-color var(--button-transition-duration, 120ms) var(--button-transition-ease, ease-out), color var(--button-transition-duration, 120ms) var(--button-transition-ease, ease-out), border-color var(--button-transition-duration, 120ms) var(--button-transition-ease, ease-out), box-shadow var(--button-transition-duration, 120ms) var(--button-transition-ease, ease-out), opacity var(--button-transition-duration, 120ms) var(--button-transition-ease, ease-out), transform var(--button-transition-duration, 120ms) var(--button-transition-ease, ease-out);
   will-change: transform;
   transform: translateZ(0) scale(1);
   /* default size is M */
-  padding-block: var(--button-pad-block-m, 10px);
-  padding-inline: var(--button-pad-inline-m, 16px);
-  font-size: var(--button-font-size-m, 16px);
+  padding-block: var(--button-pad-block-m, 6px);
+  padding-inline: var(--button-pad-inline-m, 10px);
+  font-size: var(--button-font-size-m, 14px);
   /* Sizing modifiers */
   /* Normalize icon sizes for raw <i> or <svg> used directly inside buttons */
   --button-icon-size: 1.2em;
@@ -144,39 +209,25 @@
      Views: button_view_filled | button_view_outline | button_view_soft | button_view_ghost | button_view_link
      Tones: button_tone_accent | button_tone_neutral | button_tone_success | button_tone_warning | button_tone_danger
   */
-  /* Helper custom properties per tone (consumed by views) */
-  /* Per-tone text assignments via variables (no hardcoded colors) */
-  /* Default tone if none specified */
-  /* FILLED view */
-  /* OUTLINE view */
-  /* SOFT view (subtle background) */
-  /* GHOST view (no border, transparent bg) */
-  /* Ensure neutral tone text is always #2C2C2C across views */
-  /* LINK view */
   /* Micro interaction: subtle shrink on hover/press (except link view) */
-  /* Focus style – visible only when keyboard focusing (aligns with visual tone) */
-  /* Suppress focus styles when the focus isn't keyboard-induced */
   /* Firefox: remove default inner focus padding/border on buttons */
-  /* Disabled state (native and aria) */
   /* Loading state: show spinner, reduce text opacity and block interactions */
   /* Shape modifiers (optional) */
-  /* Variant aliases (for external API compatibility):
-     default | outline | ghost | destructive | secondary | link */
 }
 .button.button_size_s {
-  padding-block: var(--button-pad-block-s, 8px);
-  padding-inline: var(--button-pad-inline-s, 12px);
+  padding-block: var(--button-pad-block-s, 6px);
+  padding-inline: var(--button-pad-inline-s, 8px);
   font-size: var(--button-font-size-s, 14px);
 }
 .button.button_size_m {
-  padding-block: var(--button-pad-block-m, 10px);
-  padding-inline: var(--button-pad-inline-m, 16px);
-  font-size: var(--button-font-size-m, 16px);
+  padding-block: var(--button-pad-block-m, 6px);
+  padding-inline: var(--button-pad-inline-m, 10px);
+  font-size: var(--button-font-size-m, 14px);
 }
 .button.button_size_l {
-  padding-block: var(--button-pad-block-l, 12px);
-  padding-inline: var(--button-pad-inline-l, 20px);
-  font-size: var(--button-font-size-l, 18px);
+  padding-block: var(--button-pad-block-l, 8px);
+  padding-inline: var(--button-pad-inline-l, 12px);
+  font-size: var(--button-font-size-l, 16px);
 }
 .button.button_size_s {
   --button-icon-size: 1.1em;
@@ -195,50 +246,62 @@
   line-height: 1;
 }
 .button.button_size_default {
-  padding-block: var(--button-pad-block-m, 10px);
-  padding-inline: var(--button-pad-inline-m, 16px);
-  font-size: var(--button-font-size-m, 16px);
+  padding-block: var(--button-pad-block-m, 6px);
+  padding-inline: var(--button-pad-inline-m, 10px);
+  font-size: var(--button-font-size-m, 14px);
 }
 .button.button_size_sm {
-  padding-block: var(--button-pad-block-s, 8px);
-  padding-inline: var(--button-pad-inline-s, 12px);
+  padding-block: var(--button-pad-block-s, 6px);
+  padding-inline: var(--button-pad-inline-s, 8px);
   font-size: var(--button-font-size-s, 14px);
 }
 .button.button_size_lg {
-  padding-block: var(--button-pad-block-l, 12px);
-  padding-inline: var(--button-pad-inline-l, 20px);
-  font-size: var(--button-font-size-l, 18px);
+  padding-block: var(--button-pad-block-l, 8px);
+  padding-inline: var(--button-pad-inline-l, 12px);
+  font-size: var(--button-font-size-l, 16px);
 }
 .button.button_block {
   inline-size: 100%;
   display: inline-flex;
 }
 .button.button_icon-only {
-  padding-inline: calc(var(--button-pad-block-m, 10px) + var(--button-icon-only-extra-padding, 2px));
+  padding-inline: calc(var(--button-pad-block-m, 6px) + var(--button-icon-only-extra-padding, 2px));
+  inline-size: -moz-min-content;
+  inline-size: min-content;
 }
 .button.button_size_s.button_icon-only {
-  padding-inline: calc(var(--button-pad-block-s, 8px) + var(--button-icon-only-extra-padding, 2px));
+  padding-inline: calc(var(--button-pad-block-s, 6px) + var(--button-icon-only-extra-padding, 2px));
+  inline-size: -moz-min-content;
+  inline-size: min-content;
 }
 .button.button_size_l.button_icon-only {
-  padding-inline: calc(var(--button-pad-block-l, 12px) + var(--button-icon-only-extra-padding, 2px));
+  padding-inline: calc(var(--button-pad-block-l, 8px) + var(--button-icon-only-extra-padding, 2px));
+  inline-size: -moz-min-content;
+  inline-size: min-content;
 }
 .button.button_size_icon {
-  padding-block: var(--button-pad-block-m, 10px);
-  padding-inline: var(--button-pad-block-m, 10px);
-  font-size: var(--button-font-size-m, 16px);
-  padding-inline: calc(var(--button-pad-block-m, 10px) + var(--button-icon-only-extra-padding, 2px));
+  padding-block: var(--button-pad-block-m, 6px);
+  padding-inline: var(--button-pad-block-m, 6px);
+  font-size: var(--button-font-size-m, 14px);
+  padding-inline: calc(var(--button-pad-block-m, 6px) + var(--button-icon-only-extra-padding, 2px));
+  inline-size: -moz-min-content;
+  inline-size: min-content;
 }
 .button.button_size_icon-sm {
-  padding-block: var(--button-pad-block-s, 8px);
-  padding-inline: var(--button-pad-block-s, 8px);
+  padding-block: var(--button-pad-block-s, 6px);
+  padding-inline: var(--button-pad-block-s, 6px);
   font-size: var(--button-font-size-s, 14px);
-  padding-inline: calc(var(--button-pad-block-s, 8px) + var(--button-icon-only-extra-padding, 2px));
+  padding-inline: calc(var(--button-pad-block-s, 6px) + var(--button-icon-only-extra-padding, 2px));
+  inline-size: -moz-min-content;
+  inline-size: min-content;
 }
 .button.button_size_icon-lg {
-  padding-block: var(--button-pad-block-l, 12px);
-  padding-inline: var(--button-pad-block-l, 12px);
-  font-size: var(--button-font-size-l, 18px);
-  padding-inline: calc(var(--button-pad-block-l, 12px) + var(--button-icon-only-extra-padding, 2px));
+  padding-block: var(--button-pad-block-l, 8px);
+  padding-inline: var(--button-pad-block-l, 8px);
+  font-size: var(--button-font-size-l, 16px);
+  padding-inline: calc(var(--button-pad-block-l, 8px) + var(--button-icon-only-extra-padding, 2px));
+  inline-size: -moz-min-content;
+  inline-size: min-content;
 }
 .button__icon {
   inline-size: 1em;
@@ -271,203 +334,15 @@
   transform-origin: 50% 50%;
   animation: button-spin 700ms linear infinite;
 }
-.button.button_tone_accent {
-  --button-btn-bg: var(--button-color-accent, #6d59ab);
-  --button-btn-fg: var(--button-color-accent-contrast, #ffffff);
-  --button-btn-br: var(--button-color-accent, #6d59ab);
-  /* Default text color for non-filled views (outline/ghost/link/soft). Can be overridden downstream */
-  --button-view-text-color: var(--button-color-accent, #6d59ab);
-  /* Derive focus color from current tone background */
-  --button-focus-color: color-mix(in oklab, var(--button-color-accent, #6d59ab) 35%, transparent);
-}
-.button.button_tone_neutral {
-  --button-btn-bg: var(--button-color-neutral, #e6e6e6);
-  --button-btn-fg: var(--button-color-neutral-contrast, #d5d5d5);
-  --button-btn-br: var(--button-color-neutral, #e6e6e6);
-  /* Default text color for non-filled views (outline/ghost/link/soft). Can be overridden downstream */
-  --button-view-text-color: var(--button-color-neutral, #e6e6e6);
-  /* Derive focus color from current tone background */
-  --button-focus-color: color-mix(in oklab, var(--button-color-neutral, #e6e6e6) 35%, transparent);
-}
-.button.button_tone_success {
-  --button-btn-bg: var(--button-color-success, #00D051);
-  --button-btn-fg: var(--button-color-success-contrast, #ffffff);
-  --button-btn-br: var(--button-color-success, #00D051);
-  /* Default text color for non-filled views (outline/ghost/link/soft). Can be overridden downstream */
-  --button-view-text-color: var(--button-color-success, #00D051);
-  /* Derive focus color from current tone background */
-  --button-focus-color: color-mix(in oklab, var(--button-color-success, #00D051) 35%, transparent);
-}
-.button.button_tone_warning {
-  --button-btn-bg: var(--button-color-warning, #F7941D);
-  --button-btn-fg: var(--button-color-warning-contrast, #ffffff);
-  --button-btn-br: var(--button-color-warning, #F7941D);
-  /* Default text color for non-filled views (outline/ghost/link/soft). Can be overridden downstream */
-  --button-view-text-color: var(--button-color-warning, #F7941D);
-  /* Derive focus color from current tone background */
-  --button-focus-color: color-mix(in oklab, var(--button-color-warning, #F7941D) 35%, transparent);
-}
-.button.button_tone_danger {
-  --button-btn-bg: var(--button-color-danger, #F8564E);
-  --button-btn-fg: var(--button-color-danger-contrast, #ffffff);
-  --button-btn-br: var(--button-color-danger, #F8564E);
-  /* Default text color for non-filled views (outline/ghost/link/soft). Can be overridden downstream */
-  --button-view-text-color: var(--button-color-danger, #F8564E);
-  /* Derive focus color from current tone background */
-  --button-focus-color: color-mix(in oklab, var(--button-color-danger, #F8564E) 35%, transparent);
-}
-.button.button_tone_accent {
-  --button-view-text-color: var(--button-tone-accent-text, #ffffff);
-  --button-btn-fg: var(--button-tone-accent-filled-fg, #ffffff);
-}
-.button.button_tone_neutral {
-  --button-view-text-color: var(--button-tone-neutral-text, #2C2C2C);
-  --button-btn-fg: var(--button-tone-neutral-filled-fg, #2C2C2C);
-}
-.button.button_tone_success {
-  --button-view-text-color: var(--button-tone-success-text, #ffffff);
-  --button-btn-fg: var(--button-tone-success-filled-fg, #ffffff);
-}
-.button.button_tone_warning {
-  --button-view-text-color: var(--button-tone-warning-text, #ffffff);
-  --button-btn-fg: var(--button-tone-warning-filled-fg, #ffffff);
-}
-.button.button_tone_danger {
-  --button-view-text-color: var(--button-tone-danger-text, #ffffff);
-  --button-btn-fg: var(--button-tone-danger-filled-fg, #ffffff);
-}
-.button:not(.button_tone_accent, .button_tone_neutral, .button_tone_success, .button_tone_warning, .button_tone_danger) {
-  --button-btn-bg: var(--button-color-accent, #6d59ab);
-  --button-btn-fg: var(--button-color-accent-contrast, #ffffff);
-  --button-btn-br: var(--button-color-accent, #6d59ab);
-  /* Default text color for non-filled views (outline/ghost/link/soft). Can be overridden downstream */
-  --button-view-text-color: var(--button-color-accent, #6d59ab);
-  /* Derive focus color from current tone background */
-  --button-focus-color: color-mix(in oklab, var(--button-color-accent, #6d59ab) 35%, transparent);
-}
-.button.button_view_filled {
-  background-color: var(--button-btn-bg, #6d59ab);
-  color: var(--button-btn-fg, #ffffff);
-  border-color: var(--button-btn-br, #6d59ab);
-}
-.button.button_view_filled:hover {
-  filter: saturate(110%) brightness(1.02);
-}
-.button.button_view_filled:active {
-  filter: saturate(115%) brightness(0.98);
-}
-.button.button_view_outline {
-  background-color: transparent;
-  /* Use tone background color for text */
-  color: var(--button-btn-bg, #6d59ab);
-  border-color: var(--button-btn-br, #6d59ab);
-  /* Fallback for browsers without color-mix */
-}
-.button.button_view_outline:hover {
-  background-color: rgba(0, 0, 0, 0.02);
-  background-color: color-mix(in oklab, var(--button-btn-bg, #6d59ab) 12%, transparent);
-}
-.button.button_view_outline:active {
-  background-color: rgba(0, 0, 0, 0.04);
-  background-color: color-mix(in oklab, var(--button-btn-bg, #6d59ab) 20%, transparent);
-}
-.button.button_view_soft {
-  /* Fallbacks first */
-  background-color: var(--button-color-surface-subtle, #f3f4f6);
-  color: var(--button-view-text-color, var(--button-color-text, #2C2C2C));
-  border-color: rgba(0, 0, 0, 0.06);
-  /* Preferred rendering using color-mix */
-  background-color: color-mix(in oklab, var(--button-btn-bg, #6d59ab) 16%, var(--button-color-surface-subtle, #f3f4f6));
-  /* Respect override when provided; otherwise compute subtle tone-based text */
-  color: var(--button-view-text-color, color-mix(in oklab, var(--button-btn-bg, #6d59ab) 85%, var(--button-color-text, #2C2C2C)));
-  border-color: color-mix(in oklab, var(--button-btn-bg, #6d59ab) 35%, transparent);
-}
-.button.button_view_soft:hover {
-  background-color: color-mix(in oklab, var(--button-btn-bg, #6d59ab) 22%, var(--button-color-surface-subtle, #f3f4f6));
-}
-.button.button_view_soft:active {
-  background-color: color-mix(in oklab, var(--button-btn-bg, #6d59ab) 28%, var(--button-color-surface-subtle, #f3f4f6));
-}
-.button.button_view_ghost {
-  background-color: transparent;
-  /* Use tone background color for text */
-  color: var(--button-btn-bg, #6d59ab);
-  border-color: transparent;
-  /* Fallback */
-}
-.button.button_view_ghost:hover {
-  background-color: rgba(0, 0, 0, 0.02);
-  background-color: color-mix(in oklab, var(--button-btn-bg, #6d59ab) 10%, transparent);
-}
-.button.button_view_ghost:active {
-  background-color: rgba(0, 0, 0, 0.04);
-  background-color: color-mix(in oklab, var(--button-btn-bg, #6d59ab) 16%, transparent);
-}
-.button.button_view_ghost.button_tone_accent {
-  color: var(--button-color-accent, #6d59ab);
-}
-.button.button_view_ghost.button_tone_accent:hover {
-  background-color: var(--button-color-surface-subtle, #f3f4f6);
-}
-.button.button_view_ghost.button_tone_accent:active {
-  background-color: var(--button-color-border, #e5e7eb);
-}
-.button.button_view_outline.button_tone_neutral {
-  color: #2C2C2C;
-}
-.button.button_view_ghost.button_tone_neutral {
-  color: #2C2C2C;
-}
-.button.button_view_link.button_tone_neutral {
-  color: #2C2C2C;
-}
-.button.button_view_link {
-  background: none;
-  /* Use tone background color for text */
-  color: var(--button-btn-bg, #6d59ab);
-  border: none;
-  padding-inline: 0; /* link buttons have no horizontal padding */
-  text-decoration: underline;
-  /* Dedicated focus for link-style buttons */
-}
-.button.button_view_link:hover {
-  text-decoration-thickness: var(--button-link-hover-underline-thickness, 2px);
-}
-.button.button_view_link:active {
-  opacity: 0.85;
-}
-.button.button_view_link:focus-visible {
-  outline: 2px solid var(--button-focus-color, #6d59ab);
-  outline-offset: 2px;
-  box-shadow: none;
-  text-decoration-thickness: var(--button-link-hover-underline-thickness, 2px);
-}
 .button:not(.button_view_link):hover {
   transform: scale(0.985);
 }
 .button:not(.button_view_link):active {
   transform: scale(0.97);
 }
-.button:focus {
-  outline: none;
-}
-.button:focus:not(:focus-visible) {
-  outline: none;
-  box-shadow: none;
-}
-.button:focus-visible {
-  box-shadow: 0 0 0 2px var(--button-focus-inner-color, #ffffff), 0 0 0 4px var(--button-focus-color, #6d59ab);
-}
 .button::-moz-focus-inner {
   border: 0;
   padding: 0;
-}
-.button:disabled, .button[aria-disabled=true], .button.button_disabled {
-  cursor: not-allowed;
-  opacity: 0.55;
-  filter: none;
-  box-shadow: none;
-  pointer-events: none;
 }
 .button.button_loading {
   position: relative;
@@ -483,112 +358,693 @@
   transform: translate(-50%, -50%);
 }
 .button.button_shape_pill {
-  border-radius: var(--button-radius-pill, 999px);
+  border-radius: var(--button-radius-pill, 50%);
 }
 .button.button_shape_square {
   border-radius: var(--button-shape-square-radius, 4px);
 }
-.button.button_variant_default { /* accent filled */
-  --button-btn-bg: var(--button-color-accent, #6d59ab);
-  --button-btn-fg: var(--button-color-accent-contrast, #ffffff);
-  --button-btn-br: var(--button-color-accent, #6d59ab);
-  /* Default text color for non-filled views (outline/ghost/link/soft). Can be overridden downstream */
-  --button-view-text-color: var(--button-color-accent, #6d59ab);
-  /* Derive focus color from current tone background */
-  --button-focus-color: color-mix(in oklab, var(--button-color-accent, #6d59ab) 35%, transparent);
-  background-color: var(--button-btn-bg, #6d59ab);
-  color: var(--button-btn-fg, #ffffff);
-  border-color: var(--button-btn-br, #6d59ab);
+
+.button.button_view_filled.button_tone_accent, .button.button_variant_default {
+  background-color: var(--interactive-primary);
+  color: var(--color-white);
+  border-color: var(--interactive-primary);
+  /* Hover */
+  /* Focus-visible */
+  /* Disabled */
 }
-.button.button_variant_default:hover {
-  filter: saturate(110%) brightness(1.02);
+.button.button_view_filled.button_tone_accent:hover, .button.button_variant_default:hover {
+  background-color: var(--interactive-primary-hover);
+  color: var(--color-white);
+  border-color: var(--interactive-primary-hover);
+  filter: none; /* keep exact color, no saturation/brightness tweaks */
 }
-.button.button_variant_default:active {
-  filter: saturate(115%) brightness(0.98);
+.button.button_view_filled.button_tone_accent:focus-visible, .button.button_variant_default:focus-visible {
+  background-color: var(--interactive-primary);
+  color: var(--color-white);
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none; /* override generic focus halo */
 }
-.button.button_variant_outline { /* accent outline */
-  --button-btn-bg: var(--button-color-accent, #6d59ab);
-  --button-btn-fg: var(--button-color-accent-contrast, #ffffff);
-  --button-btn-br: var(--button-color-accent, #6d59ab);
-  /* Default text color for non-filled views (outline/ghost/link/soft). Can be overridden downstream */
-  --button-view-text-color: var(--button-color-accent, #6d59ab);
-  /* Derive focus color from current tone background */
-  --button-focus-color: color-mix(in oklab, var(--button-color-accent, #6d59ab) 35%, transparent);
+.button.button_view_filled.button_tone_accent:disabled, .button.button_view_filled.button_tone_accent[aria-disabled=true], .button.button_view_filled.button_tone_accent.button_disabled, .button.button_variant_default:disabled, .button.button_variant_default[aria-disabled=true], .button.button_variant_default.button_disabled {
+  background-color: color-mix(in oklab, var(--interactive-primary) 60%, transparent);
+  color: var(--color-white);
+  border-color: color-mix(in oklab, var(--interactive-primary) 60%, transparent);
+  opacity: 1; /* keep text fully opaque per spec */
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+
+/* Filled view — other tones via reusable mixin */
+.button {
+  /* Success */
+  /* Warning */
+  /* Danger */
+  /* Neutral */
+}
+.button.button_view_filled.button_tone_success {
+  background-color: var(--success-base);
+  color: var(--color-white);
+  border-color: var(--success-base);
+  /* Hover */
+  /* Focus-visible */
+  /* Disabled */
+}
+.button.button_view_filled.button_tone_success:hover {
+  background-color: var(--success-medium-dark);
+  color: var(--color-white);
+  border-color: var(--success-medium-dark);
+  filter: none; /* keep exact color, no saturation/brightness tweaks */
+}
+.button.button_view_filled.button_tone_success:focus-visible {
+  background-color: var(--success-base);
+  color: var(--color-white);
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none; /* override generic focus halo */
+}
+.button.button_view_filled.button_tone_success:disabled, .button.button_view_filled.button_tone_success[aria-disabled=true], .button.button_view_filled.button_tone_success.button_disabled {
+  background-color: color-mix(in oklab, var(--success-base) 60%, transparent);
+  color: var(--color-white);
+  border-color: color-mix(in oklab, var(--success-base) 60%, transparent);
+  opacity: 1; /* keep text fully opaque per spec */
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_filled.button_tone_warning {
+  background-color: var(--warning-base);
+  color: var(--color-white);
+  border-color: var(--warning-base);
+  /* Hover */
+  /* Focus-visible */
+  /* Disabled */
+}
+.button.button_view_filled.button_tone_warning:hover {
+  background-color: var(--warning-medium-dark);
+  color: var(--color-white);
+  border-color: var(--warning-medium-dark);
+  filter: none; /* keep exact color, no saturation/brightness tweaks */
+}
+.button.button_view_filled.button_tone_warning:focus-visible {
+  background-color: var(--warning-base);
+  color: var(--color-white);
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none; /* override generic focus halo */
+}
+.button.button_view_filled.button_tone_warning:disabled, .button.button_view_filled.button_tone_warning[aria-disabled=true], .button.button_view_filled.button_tone_warning.button_disabled {
+  background-color: color-mix(in oklab, var(--warning-base) 60%, transparent);
+  color: var(--color-white);
+  border-color: color-mix(in oklab, var(--warning-base) 60%, transparent);
+  opacity: 1; /* keep text fully opaque per spec */
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_filled.button_tone_danger, .button.button_variant_destructive {
+  background-color: var(--error-base);
+  color: var(--color-white);
+  border-color: var(--error-base);
+  /* Hover */
+  /* Focus-visible */
+  /* Disabled */
+}
+.button.button_view_filled.button_tone_danger:hover, .button.button_variant_destructive:hover {
+  background-color: var(--error-medium-dark);
+  color: var(--color-white);
+  border-color: var(--error-medium-dark);
+  filter: none; /* keep exact color, no saturation/brightness tweaks */
+}
+.button.button_view_filled.button_tone_danger:focus-visible, .button.button_variant_destructive:focus-visible {
+  background-color: var(--error-base);
+  color: var(--color-white);
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none; /* override generic focus halo */
+}
+.button.button_view_filled.button_tone_danger:disabled, .button.button_view_filled.button_tone_danger[aria-disabled=true], .button.button_view_filled.button_tone_danger.button_disabled, .button.button_variant_destructive:disabled, .button.button_variant_destructive[aria-disabled=true], .button.button_variant_destructive.button_disabled {
+  background-color: color-mix(in oklab, var(--error-base) 60%, transparent);
+  color: var(--color-white);
+  border-color: color-mix(in oklab, var(--error-base) 60%, transparent);
+  opacity: 1; /* keep text fully opaque per spec */
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_filled.button_tone_neutral {
+  background-color: var(--neutral-medium);
+  color: var(--color-white);
+  border-color: var(--neutral-medium);
+  /* Hover */
+  /* Focus-visible */
+  /* Disabled */
+}
+.button.button_view_filled.button_tone_neutral:hover {
+  background-color: var(--neutral-medium-dark);
+  color: var(--color-white);
+  border-color: var(--neutral-medium-dark);
+  filter: none; /* keep exact color, no saturation/brightness tweaks */
+}
+.button.button_view_filled.button_tone_neutral:focus-visible {
+  background-color: var(--neutral-medium);
+  color: var(--color-white);
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none; /* override generic focus halo */
+}
+.button.button_view_filled.button_tone_neutral:disabled, .button.button_view_filled.button_tone_neutral[aria-disabled=true], .button.button_view_filled.button_tone_neutral.button_disabled {
+  background-color: color-mix(in oklab, var(--neutral-medium) 60%, transparent);
+  color: var(--color-white);
+  border-color: color-mix(in oklab, var(--neutral-medium) 60%, transparent);
+  opacity: 1; /* keep text fully opaque per spec */
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+
+/* Soft view — per tone */
+.button {
+  /* Neutral soft */
+  /* Accent soft */
+  /* Success soft */
+  /* Warning soft */
+  /* Danger soft */
+}
+.button.button_view_soft.button_tone_neutral {
+  /* Use transparent overlay to ensure exact tone percentages regardless of container surface */
+  background-color: color-mix(in oklab, var(--neutral-dark) 5%, transparent);
+  color: var(--neutral-dark);
+  border-color: color-mix(in oklab, var(--neutral-dark) 35%, transparent);
+}
+.button.button_view_soft.button_tone_neutral:hover {
+  background-color: color-mix(in oklab, var(--neutral-dark) 10%, transparent);
+  color: var(--neutral-dark);
+}
+.button.button_view_soft.button_tone_neutral:focus-visible {
+  background-color: color-mix(in oklab, var(--neutral-dark) 5%, transparent);
+  color: var(--neutral-dark);
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_soft.button_tone_neutral:disabled, .button.button_view_soft.button_tone_neutral[aria-disabled=true], .button.button_view_soft.button_tone_neutral.button_disabled {
+  /* reduce text to requested opacity */
+  color: color-mix(in oklab, var(--neutral-dark) 60%, transparent);
+  /* take the base bg and apply extra transparency */
+  background-color: color-mix(in oklab, color-mix(in oklab, var(--neutral-dark) 5%, transparent) 60%, transparent);
+  border-color: color-mix(in oklab, var(--neutral-dark) 35%, transparent);
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_soft.button_tone_accent {
+  /* Use transparent overlay to ensure exact tone percentages regardless of container surface */
+  background-color: color-mix(in oklab, var(--brand-base) 10%, transparent);
+  color: var(--brand-dark);
+  border-color: color-mix(in oklab, var(--brand-base) 35%, transparent);
+}
+.button.button_view_soft.button_tone_accent:hover {
+  background-color: color-mix(in oklab, var(--brand-base) 15%, transparent);
+  color: var(--brand-dark);
+}
+.button.button_view_soft.button_tone_accent:focus-visible {
+  background-color: color-mix(in oklab, var(--brand-base) 10%, transparent);
+  color: var(--brand-dark);
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_soft.button_tone_accent:disabled, .button.button_view_soft.button_tone_accent[aria-disabled=true], .button.button_view_soft.button_tone_accent.button_disabled {
+  /* reduce text to requested opacity */
+  color: color-mix(in oklab, var(--brand-dark) 60%, transparent);
+  /* take the base bg and apply extra transparency */
+  background-color: color-mix(in oklab, color-mix(in oklab, var(--brand-base) 10%, transparent) 60%, transparent);
+  border-color: color-mix(in oklab, var(--brand-base) 35%, transparent);
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_soft.button_tone_success {
+  /* Use transparent overlay to ensure exact tone percentages regardless of container surface */
+  background-color: color-mix(in oklab, var(--success-base) 10%, transparent);
+  color: var(--success-dark);
+  border-color: color-mix(in oklab, var(--success-base) 35%, transparent);
+}
+.button.button_view_soft.button_tone_success:hover {
+  background-color: color-mix(in oklab, var(--success-base) 15%, transparent);
+  color: var(--success-dark);
+}
+.button.button_view_soft.button_tone_success:focus-visible {
+  background-color: color-mix(in oklab, var(--success-base) 10%, transparent);
+  color: var(--success-dark);
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_soft.button_tone_success:disabled, .button.button_view_soft.button_tone_success[aria-disabled=true], .button.button_view_soft.button_tone_success.button_disabled {
+  /* reduce text to requested opacity */
+  color: color-mix(in oklab, var(--success-dark) 60%, transparent);
+  /* take the base bg and apply extra transparency */
+  background-color: color-mix(in oklab, color-mix(in oklab, var(--success-base) 10%, transparent) 60%, transparent);
+  border-color: color-mix(in oklab, var(--success-base) 35%, transparent);
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_soft.button_tone_warning {
+  /* Use transparent overlay to ensure exact tone percentages regardless of container surface */
+  background-color: color-mix(in oklab, var(--warning-base) 10%, transparent);
+  color: var(--warning-medium-dark);
+  border-color: color-mix(in oklab, var(--warning-base) 35%, transparent);
+}
+.button.button_view_soft.button_tone_warning:hover {
+  background-color: color-mix(in oklab, var(--warning-base) 15%, transparent);
+  color: var(--warning-medium-dark);
+}
+.button.button_view_soft.button_tone_warning:focus-visible {
+  background-color: color-mix(in oklab, var(--warning-base) 10%, transparent);
+  color: var(--warning-medium-dark);
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_soft.button_tone_warning:disabled, .button.button_view_soft.button_tone_warning[aria-disabled=true], .button.button_view_soft.button_tone_warning.button_disabled {
+  /* reduce text to requested opacity */
+  color: color-mix(in oklab, var(--warning-medium-dark) 60%, transparent);
+  /* take the base bg and apply extra transparency */
+  background-color: color-mix(in oklab, color-mix(in oklab, var(--warning-base) 10%, transparent) 60%, transparent);
+  border-color: color-mix(in oklab, var(--warning-base) 35%, transparent);
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_soft.button_tone_danger {
+  /* Use transparent overlay to ensure exact tone percentages regardless of container surface */
+  background-color: color-mix(in oklab, var(--error-base) 10%, transparent);
+  color: var(--error-medium-dark);
+  border-color: color-mix(in oklab, var(--error-base) 35%, transparent);
+}
+.button.button_view_soft.button_tone_danger:hover {
+  background-color: color-mix(in oklab, var(--error-base) 15%, transparent);
+  color: var(--error-medium-dark);
+}
+.button.button_view_soft.button_tone_danger:focus-visible {
+  background-color: color-mix(in oklab, var(--error-base) 10%, transparent);
+  color: var(--error-medium-dark);
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_soft.button_tone_danger:disabled, .button.button_view_soft.button_tone_danger[aria-disabled=true], .button.button_view_soft.button_tone_danger.button_disabled {
+  /* reduce text to requested opacity */
+  color: color-mix(in oklab, var(--error-medium-dark) 60%, transparent);
+  /* take the base bg and apply extra transparency */
+  background-color: color-mix(in oklab, color-mix(in oklab, var(--error-base) 10%, transparent) 60%, transparent);
+  border-color: color-mix(in oklab, var(--error-base) 35%, transparent);
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+
+/* Ghost view — per tone */
+.button {
+  /* Neutral ghost */
+  /* Accent ghost */
+  /* Success ghost */
+  /* Warning ghost */
+  /* Danger ghost */
+}
+.button.button_view_ghost.button_tone_neutral {
   background-color: transparent;
-  color: var(--button-btn-bg, #6d59ab);
-  border-color: var(--button-btn-br, #6d59ab);
-}
-.button.button_variant_outline:hover {
-  background-color: rgba(0, 0, 0, 0.02);
-  background-color: color-mix(in oklab, var(--button-btn-bg, #6d59ab) 12%, transparent);
-}
-.button.button_variant_outline:active {
-  background-color: rgba(0, 0, 0, 0.04);
-  background-color: color-mix(in oklab, var(--button-btn-bg, #6d59ab) 20%, transparent);
-}
-.button.button_variant_ghost { /* accent ghost */
-  --button-btn-bg: var(--button-color-accent, #6d59ab);
-  --button-btn-fg: var(--button-color-accent-contrast, #ffffff);
-  --button-btn-br: var(--button-color-accent, #6d59ab);
-  /* Default text color for non-filled views (outline/ghost/link/soft). Can be overridden downstream */
-  --button-view-text-color: var(--button-color-accent, #6d59ab);
-  /* Derive focus color from current tone background */
-  --button-focus-color: color-mix(in oklab, var(--button-color-accent, #6d59ab) 35%, transparent);
-  background-color: transparent;
-  color: var(--button-btn-bg, #6d59ab);
+  color: var(--neutral-dark);
   border-color: transparent;
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
 }
-.button.button_variant_ghost:hover {
-  background-color: rgba(0, 0, 0, 0.02);
-  background-color: color-mix(in oklab, var(--button-btn-bg, #6d59ab) 10%, transparent);
+.button.button_view_ghost.button_tone_neutral:hover {
+  background-color: color-mix(in oklab, var(--neutral-dark) 10%, transparent);
 }
-.button.button_variant_ghost:active {
-  background-color: rgba(0, 0, 0, 0.04);
-  background-color: color-mix(in oklab, var(--button-btn-bg, #6d59ab) 16%, transparent);
+.button.button_view_ghost.button_tone_neutral:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
 }
-.button.button_variant_destructive { /* danger filled */
-  --button-btn-bg: var(--button-color-danger, #F8564E);
-  --button-btn-fg: var(--button-color-danger-contrast, #ffffff);
-  --button-btn-br: var(--button-color-danger, #F8564E);
-  /* Default text color for non-filled views (outline/ghost/link/soft). Can be overridden downstream */
-  --button-view-text-color: var(--button-color-danger, #F8564E);
-  /* Derive focus color from current tone background */
-  --button-focus-color: color-mix(in oklab, var(--button-color-danger, #F8564E) 35%, transparent);
-  background-color: var(--button-btn-bg, #6d59ab);
-  color: var(--button-btn-fg, #ffffff);
-  border-color: var(--button-btn-br, #6d59ab);
+.button.button_view_ghost.button_tone_neutral:disabled, .button.button_view_ghost.button_tone_neutral[aria-disabled=true], .button.button_view_ghost.button_tone_neutral.button_disabled {
+  color: color-mix(in oklab, var(--neutral-dark) 60%, transparent);
+  background-color: color-mix(in oklab, color-mix(in oklab, var(--neutral-dark) 5%, var(--button-color-surface-subtle)) 60%, transparent);
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
 }
-.button.button_variant_destructive:hover {
-  filter: saturate(110%) brightness(1.02);
+.button.button_view_ghost.button_tone_accent {
+  background-color: transparent;
+  color: var(--brand-dark);
+  border-color: transparent;
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
 }
-.button.button_variant_destructive:active {
-  filter: saturate(115%) brightness(0.98);
+.button.button_view_ghost.button_tone_accent:hover {
+  background-color: color-mix(in oklab, var(--brand-base) 15%, transparent);
 }
-.button.button_variant_secondary { /* neutral soft */
-  --button-btn-bg: var(--button-color-neutral, #e6e6e6);
-  background-color: var(--button-color-surface-subtle, #f3f4f6);
-  color: #2C2C2C;
-  border-color: color-mix(in oklab, var(--button-btn-bg, #e6e6e6) 35%, transparent);
+.button.button_view_ghost.button_tone_accent:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
 }
-.button.button_variant_secondary:hover {
-  background-color: color-mix(in oklab, var(--button-btn-bg, #e6e6e6) 22%, var(--button-color-surface-subtle, #f3f4f6));
+.button.button_view_ghost.button_tone_accent:disabled, .button.button_view_ghost.button_tone_accent[aria-disabled=true], .button.button_view_ghost.button_tone_accent.button_disabled {
+  color: color-mix(in oklab, var(--brand-dark) 60%, transparent);
+  background-color: transparent;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
 }
-.button.button_variant_secondary:active {
-  background-color: color-mix(in oklab, var(--button-btn-bg, #e6e6e6) 28%, var(--button-color-surface-subtle, #f3f4f6));
+.button.button_view_ghost.button_tone_success {
+  background-color: transparent;
+  color: var(--success-dark);
+  border-color: transparent;
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
 }
-.button.button_variant_link { /* accent link */
-  --button-btn-bg: var(--button-color-accent, #6d59ab);
-  background: none;
-  color: var(--button-btn-bg, #6d59ab);
-  border: none;
-  padding-inline: 0;
-  text-decoration: underline;
+.button.button_view_ghost.button_tone_success:hover {
+  background-color: color-mix(in oklab, var(--success-base) 15%, transparent);
 }
-.button.button_variant_link:hover {
-  text-decoration-thickness: 2px;
+.button.button_view_ghost.button_tone_success:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
 }
-.button.button_variant_link:active {
-  opacity: 0.85;
+.button.button_view_ghost.button_tone_success:disabled, .button.button_view_ghost.button_tone_success[aria-disabled=true], .button.button_view_ghost.button_tone_success.button_disabled {
+  color: color-mix(in oklab, var(--success-dark) 60%, transparent);
+  background-color: transparent;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_ghost.button_tone_warning {
+  background-color: transparent;
+  color: var(--warning-medium-dark);
+  border-color: transparent;
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
+}
+.button.button_view_ghost.button_tone_warning:hover {
+  background-color: color-mix(in oklab, var(--warning-base) 15%, transparent);
+}
+.button.button_view_ghost.button_tone_warning:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_ghost.button_tone_warning:disabled, .button.button_view_ghost.button_tone_warning[aria-disabled=true], .button.button_view_ghost.button_tone_warning.button_disabled {
+  color: color-mix(in oklab, var(--warning-medium-dark) 60%, transparent);
+  background-color: transparent;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_ghost.button_tone_danger {
+  background-color: transparent;
+  color: var(--error-medium-dark);
+  border-color: transparent;
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
+}
+.button.button_view_ghost.button_tone_danger:hover {
+  background-color: color-mix(in oklab, var(--error-base) 15%, transparent);
+}
+.button.button_view_ghost.button_tone_danger:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_ghost.button_tone_danger:disabled, .button.button_view_ghost.button_tone_danger[aria-disabled=true], .button.button_view_ghost.button_tone_danger.button_disabled {
+  color: color-mix(in oklab, var(--error-medium-dark) 60%, transparent);
+  background-color: transparent;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+
+/* Outline view — per tone */
+.button {
+  /* Neutral outline */
+  /* Accent outline */
+  /* Success outline */
+  /* Warning outline */
+  /* Danger outline */
+}
+.button.button_view_outline.button_tone_neutral {
+  background-color: transparent;
+  color: var(--neutral-dark);
+  border-color: color-mix(in oklab, var(--neutral-dark) 15%, transparent);
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
+}
+.button.button_view_outline.button_tone_neutral:hover {
+  background-color: color-mix(in oklab, var(--neutral-dark) 10%, transparent);
+}
+.button.button_view_outline.button_tone_neutral:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_outline.button_tone_neutral:disabled, .button.button_view_outline.button_tone_neutral[aria-disabled=true], .button.button_view_outline.button_tone_neutral.button_disabled {
+  color: color-mix(in oklab, var(--neutral-dark) 60%, transparent);
+  border-color: color-mix(in oklab, var(--neutral-dark) 9%, transparent);
+  background-color: color-mix(in oklab, color-mix(in oklab, var(--neutral-dark) 5%, var(--button-color-surface-subtle)) 60%, transparent);
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_outline.button_tone_accent {
+  background-color: transparent;
+  color: var(--brand-dark);
+  border-color: color-mix(in oklab, var(--brand-base) 15%, transparent);
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
+}
+.button.button_view_outline.button_tone_accent:hover {
+  background-color: color-mix(in oklab, var(--brand-base) 15%, transparent);
+}
+.button.button_view_outline.button_tone_accent:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_outline.button_tone_accent:disabled, .button.button_view_outline.button_tone_accent[aria-disabled=true], .button.button_view_outline.button_tone_accent.button_disabled {
+  color: color-mix(in oklab, var(--brand-dark) 60%, transparent);
+  border-color: color-mix(in oklab, var(--brand-base) 9%, transparent);
+  background-color: transparent;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_outline.button_tone_success {
+  background-color: transparent;
+  color: var(--success-dark);
+  border-color: color-mix(in oklab, var(--success-dark) 50%, transparent);
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
+}
+.button.button_view_outline.button_tone_success:hover {
+  background-color: color-mix(in oklab, var(--success-base) 15%, transparent);
+}
+.button.button_view_outline.button_tone_success:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_outline.button_tone_success:disabled, .button.button_view_outline.button_tone_success[aria-disabled=true], .button.button_view_outline.button_tone_success.button_disabled {
+  color: color-mix(in oklab, var(--success-dark) 60%, transparent);
+  border-color: color-mix(in oklab, var(--success-dark) 30%, transparent);
+  background-color: transparent;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_outline.button_tone_warning {
+  background-color: transparent;
+  color: var(--warning-medium-dark);
+  border-color: color-mix(in oklab, var(--warning-medium-dark) 50%, transparent);
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
+}
+.button.button_view_outline.button_tone_warning:hover {
+  background-color: color-mix(in oklab, var(--warning-base) 15%, transparent);
+}
+.button.button_view_outline.button_tone_warning:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_outline.button_tone_warning:disabled, .button.button_view_outline.button_tone_warning[aria-disabled=true], .button.button_view_outline.button_tone_warning.button_disabled {
+  color: color-mix(in oklab, var(--warning-medium-dark) 60%, transparent);
+  border-color: color-mix(in oklab, var(--warning-medium-dark) 30%, transparent);
+  background-color: transparent;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_outline.button_tone_danger {
+  background-color: transparent;
+  color: var(--error-medium-dark);
+  border-color: color-mix(in oklab, var(--error-base) 50%, transparent);
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
+}
+.button.button_view_outline.button_tone_danger:hover {
+  background-color: color-mix(in oklab, var(--error-base) 15%, transparent);
+}
+.button.button_view_outline.button_tone_danger:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_outline.button_tone_danger:disabled, .button.button_view_outline.button_tone_danger[aria-disabled=true], .button.button_view_outline.button_tone_danger.button_disabled {
+  color: color-mix(in oklab, var(--error-medium-dark) 60%, transparent);
+  border-color: color-mix(in oklab, var(--error-base) 30%, transparent);
+  background-color: transparent;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+
+/* Link = Ghost */
+.button.button_view_link.button_tone_neutral {
+  background-color: transparent;
+  color: var(--neutral-dark);
+  border-color: transparent;
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
+}
+.button.button_view_link.button_tone_neutral:hover {
+  background-color: color-mix(in oklab, var(--neutral-dark) 10%, transparent);
+}
+.button.button_view_link.button_tone_neutral:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_link.button_tone_neutral:disabled, .button.button_view_link.button_tone_neutral[aria-disabled=true], .button.button_view_link.button_tone_neutral.button_disabled {
+  color: color-mix(in oklab, var(--neutral-dark) 60%, transparent);
+  background-color: color-mix(in oklab, color-mix(in oklab, var(--neutral-dark) 5%, var(--button-color-surface-subtle)) 60%, transparent);
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_link.button_tone_accent {
+  background-color: transparent;
+  color: var(--brand-dark);
+  border-color: transparent;
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
+}
+.button.button_view_link.button_tone_accent:hover {
+  background-color: color-mix(in oklab, var(--brand-base) 15%, transparent);
+}
+.button.button_view_link.button_tone_accent:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_link.button_tone_accent:disabled, .button.button_view_link.button_tone_accent[aria-disabled=true], .button.button_view_link.button_tone_accent.button_disabled {
+  color: color-mix(in oklab, var(--brand-dark) 60%, transparent);
+  background-color: transparent;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_link.button_tone_success {
+  background-color: transparent;
+  color: var(--success-dark);
+  border-color: transparent;
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
+}
+.button.button_view_link.button_tone_success:hover {
+  background-color: color-mix(in oklab, var(--success-base) 15%, transparent);
+}
+.button.button_view_link.button_tone_success:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_link.button_tone_success:disabled, .button.button_view_link.button_tone_success[aria-disabled=true], .button.button_view_link.button_tone_success.button_disabled {
+  color: color-mix(in oklab, var(--success-dark) 60%, transparent);
+  background-color: transparent;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_link.button_tone_warning {
+  background-color: transparent;
+  color: var(--warning-medium-dark);
+  border-color: transparent;
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
+}
+.button.button_view_link.button_tone_warning:hover {
+  background-color: color-mix(in oklab, var(--warning-base) 15%, transparent);
+}
+.button.button_view_link.button_tone_warning:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_link.button_tone_warning:disabled, .button.button_view_link.button_tone_warning[aria-disabled=true], .button.button_view_link.button_tone_warning.button_disabled {
+  color: color-mix(in oklab, var(--warning-medium-dark) 60%, transparent);
+  background-color: transparent;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
+}
+.button.button_view_link.button_tone_danger {
+  background-color: transparent;
+  color: var(--error-medium-dark);
+  border-color: transparent;
+  /* Hover tint should be a transparent overlay of the tone (not mixed with a fixed surface) */
+}
+.button.button_view_link.button_tone_danger:hover {
+  background-color: color-mix(in oklab, var(--error-base) 15%, transparent);
+}
+.button.button_view_link.button_tone_danger:focus-visible {
+  background-color: transparent;
+  outline: 2px solid color-mix(in oklab, var(--brand-base) 60%, transparent);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.button.button_view_link.button_tone_danger:disabled, .button.button_view_link.button_tone_danger[aria-disabled=true], .button.button_view_link.button_tone_danger.button_disabled {
+  color: color-mix(in oklab, var(--error-medium-dark) 60%, transparent);
+  background-color: transparent;
+  opacity: 1;
+  pointer-events: none;
+  box-shadow: none;
+  filter: none;
 }
 
 /*
