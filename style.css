@@ -125,15 +125,15 @@ html {
   --button-font-family: InterVariable, Helvetica, Arial, sans-serif;
   --button-font-weight: 500;
   --button-font-size-s: 14px;
-  --button-font-size-m: 14px;
-  --button-font-size-l: 16px;
+  --button-font-size-m: 16px;
+  --button-font-size-l: 18px;
   --button-line-height: 1;
   --button-pad-block-s: 6px;
   --button-pad-inline-s: 8px;
-  --button-pad-block-m: 6px;
-  --button-pad-inline-m: 10px;
-  --button-pad-block-l: 8px;
-  --button-pad-inline-l: 12px;
+  --button-pad-block-m: 8px;
+  --button-pad-inline-m: 12px;
+  --button-pad-block-l: 10px;
+  --button-pad-inline-l: 14px;
   /* Transitions */
   --button-transition-duration: 120ms;
   --button-transition-ease: ease-out;
@@ -192,9 +192,9 @@ html {
   will-change: transform;
   transform: translateZ(0) scale(1);
   /* default size is M */
-  padding-block: var(--button-pad-block-m, 6px);
-  padding-inline: var(--button-pad-inline-m, 10px);
-  font-size: var(--button-font-size-m, 14px);
+  padding-block: var(--button-pad-block-m, 8px);
+  padding-inline: var(--button-pad-inline-m, 12px);
+  font-size: var(--button-font-size-m, 16px);
   /* Sizing modifiers */
   /* Normalize icon sizes for raw <i> or <svg> used directly inside buttons */
   --button-icon-size: 1.2em;
@@ -220,14 +220,14 @@ html {
   font-size: var(--button-font-size-s, 14px);
 }
 .button.button_size_m {
-  padding-block: var(--button-pad-block-m, 6px);
-  padding-inline: var(--button-pad-inline-m, 10px);
-  font-size: var(--button-font-size-m, 14px);
+  padding-block: var(--button-pad-block-m, 8px);
+  padding-inline: var(--button-pad-inline-m, 12px);
+  font-size: var(--button-font-size-m, 16px);
 }
 .button.button_size_l {
-  padding-block: var(--button-pad-block-l, 8px);
-  padding-inline: var(--button-pad-inline-l, 12px);
-  font-size: var(--button-font-size-l, 16px);
+  padding-block: var(--button-pad-block-l, 10px);
+  padding-inline: var(--button-pad-inline-l, 14px);
+  font-size: var(--button-font-size-l, 18px);
 }
 .button.button_size_s {
   --button-icon-size: 1.1em;
@@ -246,9 +246,9 @@ html {
   line-height: 1;
 }
 .button.button_size_default {
-  padding-block: var(--button-pad-block-m, 6px);
-  padding-inline: var(--button-pad-inline-m, 10px);
-  font-size: var(--button-font-size-m, 14px);
+  padding-block: var(--button-pad-block-m, 8px);
+  padding-inline: var(--button-pad-inline-m, 12px);
+  font-size: var(--button-font-size-m, 16px);
 }
 .button.button_size_sm {
   padding-block: var(--button-pad-block-s, 6px);
@@ -256,16 +256,16 @@ html {
   font-size: var(--button-font-size-s, 14px);
 }
 .button.button_size_lg {
-  padding-block: var(--button-pad-block-l, 8px);
-  padding-inline: var(--button-pad-inline-l, 12px);
-  font-size: var(--button-font-size-l, 16px);
+  padding-block: var(--button-pad-block-l, 10px);
+  padding-inline: var(--button-pad-inline-l, 14px);
+  font-size: var(--button-font-size-l, 18px);
 }
 .button.button_block {
   inline-size: 100%;
   display: inline-flex;
 }
 .button.button_icon-only {
-  padding-inline: calc(var(--button-pad-block-m, 6px) + var(--button-icon-only-extra-padding, 2px));
+  padding-inline: calc(var(--button-pad-block-m, 8px) + var(--button-icon-only-extra-padding, 2px));
   inline-size: -moz-min-content;
   inline-size: min-content;
 }
@@ -275,15 +275,15 @@ html {
   inline-size: min-content;
 }
 .button.button_size_l.button_icon-only {
-  padding-inline: calc(var(--button-pad-block-l, 8px) + var(--button-icon-only-extra-padding, 2px));
+  padding-inline: calc(var(--button-pad-block-l, 10px) + var(--button-icon-only-extra-padding, 2px));
   inline-size: -moz-min-content;
   inline-size: min-content;
 }
 .button.button_size_icon {
-  padding-block: var(--button-pad-block-m, 6px);
-  padding-inline: var(--button-pad-block-m, 6px);
-  font-size: var(--button-font-size-m, 14px);
-  padding-inline: calc(var(--button-pad-block-m, 6px) + var(--button-icon-only-extra-padding, 2px));
+  padding-block: var(--button-pad-block-m, 8px);
+  padding-inline: var(--button-pad-block-m, 8px);
+  font-size: var(--button-font-size-m, 16px);
+  padding-inline: calc(var(--button-pad-block-m, 8px) + var(--button-icon-only-extra-padding, 2px));
   inline-size: -moz-min-content;
   inline-size: min-content;
 }
@@ -296,10 +296,10 @@ html {
   inline-size: min-content;
 }
 .button.button_size_icon-lg {
-  padding-block: var(--button-pad-block-l, 8px);
-  padding-inline: var(--button-pad-block-l, 8px);
-  font-size: var(--button-font-size-l, 16px);
-  padding-inline: calc(var(--button-pad-block-l, 8px) + var(--button-icon-only-extra-padding, 2px));
+  padding-block: var(--button-pad-block-l, 10px);
+  padding-inline: var(--button-pad-block-l, 10px);
+  font-size: var(--button-font-size-l, 18px);
+  padding-inline: calc(var(--button-pad-block-l, 10px) + var(--button-icon-only-extra-padding, 2px));
   inline-size: -moz-min-content;
   inline-size: min-content;
 }
